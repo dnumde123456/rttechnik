@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState } from "react"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
@@ -72,11 +71,11 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Headquarters</h3>
                     <p className="text-muted-foreground">
-                      RTTechnik GmbH
+                      RTTechnik
                       <br />
-                      123 Clean Tech Street
+                      Ziębicka 35/116
                       <br />
-                      1010 Vienna, Austria
+                      60-164 Poznań, Poland
                     </p>
                   </div>
                 </div>
@@ -87,11 +86,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Phone</h3>
-                    <p className="text-muted-foreground">
-                      Main: +43 123 456 789
-                      <br />
-                      Support: +43 123 456 780
-                    </p>
+                    <p className="text-muted-foreground">Main: +48 61 670 78 58</p>
                   </div>
                 </div>
 
@@ -103,13 +98,8 @@ export default function ContactPage() {
                     <h3 className="font-semibold text-lg mb-1">Email</h3>
                     <p className="text-muted-foreground">
                       General Inquiries:{" "}
-                      <a href="mailto:info@rttechnik.com" className="text-primary hover:underline">
-                        info@rttechnik.com
-                      </a>
-                      <br />
-                      Support:{" "}
-                      <a href="mailto:support@rttechnik.com" className="text-primary hover:underline">
-                        support@rttechnik.com
+                      <a href="mailto:office@rttechnik.com" className="text-primary hover:underline">
+                        office@rttechnik.com
                       </a>
                     </p>
                   </div>
@@ -130,12 +120,17 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              {/* Google Maps */}
               <div className="relative h-[300px] rounded-xl overflow-hidden shadow-lg">
-                <Image
-                  src="/placeholder.svg?height=600&width=800"
-                  alt="RTTechnik office location"
-                  fill
-                  className="object-cover"
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2434.8234567890123!2d16.9251!3d52.4064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47045b2062e2b2b7%3A0x1234567890abcdef!2sZi%C4%99bicka%2035%2C%2060-164%20Pozna%C5%84%2C%20Poland!5e0!3m2!1sen!2spl!4v1234567890123!5m2!1sen!2spl"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="RTTechnik Office Location"
                 />
               </div>
             </div>
@@ -204,7 +199,7 @@ export default function ContactPage() {
                           <Input
                             id="phone"
                             name="phone"
-                            placeholder="+43 123 456 789"
+                            placeholder="+48 61 670 78 58"
                             value={formData.phone}
                             onChange={handleChange}
                           />
@@ -260,95 +255,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Regional Offices */}
-      <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <Badge className="mb-4">Global Presence</Badge>
-            <h2 className="text-3xl font-bold mb-6">Our Regional Offices</h2>
-            <p className="text-muted-foreground text-lg">
-              With offices across Europe, we're well-positioned to serve clients throughout the region with local
-              expertise and support.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border-none shadow-lg">
-              <CardContent className="p-6 space-y-4">
-                <h3 className="text-xl font-bold">Germany</h3>
-                <div className="flex items-start">
-                  <MapPin className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <p className="text-muted-foreground">
-                    RTTechnik GmbH
-                    <br />
-                    Technologiepark 5<br />
-                    10587 Berlin, Germany
-                  </p>
-                </div>
-                <div className="flex items-start">
-                  <Phone className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <p className="text-muted-foreground">+49 30 123 45678</p>
-                </div>
-                <div className="flex items-start">
-                  <Mail className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <p className="text-muted-foreground">germany@rttechnik.com</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-lg">
-              <CardContent className="p-6 space-y-4">
-                <h3 className="text-xl font-bold">Switzerland</h3>
-                <div className="flex items-start">
-                  <MapPin className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <p className="text-muted-foreground">
-                    RTTechnik AG
-                    <br />
-                    Industriestrasse 10
-                    <br />
-                    8304 Wallisellen, Switzerland
-                  </p>
-                </div>
-                <div className="flex items-start">
-                  <Phone className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <p className="text-muted-foreground">+41 44 123 45 67</p>
-                </div>
-                <div className="flex items-start">
-                  <Mail className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <p className="text-muted-foreground">switzerland@rttechnik.com</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-lg">
-              <CardContent className="p-6 space-y-4">
-                <h3 className="text-xl font-bold">Czech Republic</h3>
-                <div className="flex items-start">
-                  <MapPin className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <p className="text-muted-foreground">
-                    RTTechnik s.r.o.
-                    <br />
-                    Technologická 15
-                    <br />
-                    160 00 Prague, Czech Republic
-                  </p>
-                </div>
-                <div className="flex items-start">
-                  <Phone className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <p className="text-muted-foreground">+420 220 123 456</p>
-                </div>
-                <div className="flex items-start">
-                  <Mail className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <p className="text-muted-foreground">czech@rttechnik.com</p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
-      <section className="py-16">
+      <section className="py-16 bg-muted">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Badge className="mb-4">FAQ</Badge>
@@ -400,7 +308,7 @@ export default function ContactPage() {
               Don't see your question here? Contact us directly and we'll be happy to help.
             </p>
             <Button asChild>
-              <a href="mailto:info@rttechnik.com">Email Us</a>
+              <a href="mailto:office@rttechnik.com">Email Us</a>
             </Button>
           </div>
         </div>

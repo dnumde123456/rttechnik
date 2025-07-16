@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, Users, Award, Clock, Building2 } from "lucide-react"
+import { CheckCircle, Users, Award, Clock, Building2, Shield } from "lucide-react"
 
 export default function AboutPage() {
   return (
@@ -27,7 +27,12 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl">
-              <Image src="/placeholder.svg?height=1000&width=800" alt="RTTechnik team" fill className="object-cover" />
+              <Image
+                src="/images/cleanroom-personnel.png"
+                alt="RTTechnik clean room professionals"
+                fill
+                className="object-cover"
+              />
             </div>
 
             <div>
@@ -40,7 +45,7 @@ export default function AboutPage() {
               </p>
               <p className="text-muted-foreground mb-4">
                 Our journey has been marked by continuous innovation, unwavering commitment to quality, and a deep
-                understanding of our clients' unique needs. We've successfully completed over 500 projects across
+                understanding of our clients' unique needs. We've successfully completed over 187 projects across
                 pharmaceutical, medical device, biotechnology, and microelectronics industries.
               </p>
               <p className="text-muted-foreground mb-6">
@@ -71,8 +76,84 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* ISO 9001 Certification Section */}
       <section className="py-16 bg-muted">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="flex items-center mb-6">
+                <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center mr-4">
+                  <Shield className="h-8 w-8 text-primary" />
+                </div>
+                <div>
+                  <Badge className="mb-2">Quality Assurance</Badge>
+                  <h2 className="text-3xl font-bold">ISO 9001:2015 Certified Excellence</h2>
+                </div>
+              </div>
+
+              <p className="text-muted-foreground mb-6">
+                RTTechnik is proud to be ISO 9001:2015 certified, demonstrating our commitment to quality management
+                systems and continuous improvement. This certification ensures that every aspect of our operations meets
+                the highest international standards.
+              </p>
+
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
+                  <div>
+                    <h3 className="font-semibold">Quality Management System</h3>
+                    <p className="text-muted-foreground text-sm">
+                      Systematic approach to quality control and assurance
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
+                  <div>
+                    <h3 className="font-semibold">Continuous Improvement</h3>
+                    <p className="text-muted-foreground text-sm">Regular assessment and enhancement of processes</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
+                  <div>
+                    <h3 className="font-semibold">Customer Satisfaction</h3>
+                    <p className="text-muted-foreground text-sm">Focus on meeting and exceeding client expectations</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
+                  <div>
+                    <h3 className="font-semibold">Risk Management</h3>
+                    <p className="text-muted-foreground text-sm">Proactive identification and mitigation of risks</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="relative h-16 w-20">
+                  <Image src="/images/iso-9001-logo.png" alt="ISO 9001 Certified" fill className="object-contain" />
+                </div>
+                <div className="relative h-16 w-20">
+                  <Image src="/images/bio-forum-member.png" alt="Bio Forum Member" fill className="object-contain" />
+                </div>
+              </div>
+            </div>
+
+            <div className="relative h-[600px] rounded-xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/iso-certificate.png"
+                alt="RTTechnik ISO 9001:2015 Certificate"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Badge className="mb-4">Our Impact</Badge>
@@ -88,7 +169,7 @@ export default function AboutPage() {
               <div className="flex justify-center mb-4">
                 <Building2 className="h-10 w-10 text-primary" />
               </div>
-              <div className="text-4xl font-bold mb-2">500+</div>
+              <div className="text-4xl font-bold mb-2">187</div>
               <p className="text-muted-foreground">Projects Completed</p>
             </div>
 
@@ -120,7 +201,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-16">
+      <section className="py-16 bg-muted">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Badge className="mb-4">Our Team</Badge>
@@ -136,25 +217,25 @@ export default function AboutPage() {
               {
                 name: "Dr. Robert Müller",
                 position: "Founder & CEO",
-                image: "/placeholder.svg?height=400&width=400",
+                image: "/images/design-planning.png",
                 bio: "With over 30 years in the industry, Dr. Müller leads our company with vision and expertise.",
               },
               {
                 name: "Ing. Maria Schmidt",
                 position: "Technical Director",
-                image: "/placeholder.svg?height=400&width=400",
+                image: "/images/cleanroom-lab.png",
                 bio: "Maria oversees all technical aspects of our projects, ensuring the highest standards of quality.",
               },
               {
                 name: "Dipl.-Ing. Thomas Weber",
                 position: "Head of Engineering",
-                image: "/placeholder.svg?height=400&width=400",
+                image: "/images/cleanroom-space.png",
                 bio: "Thomas brings innovative engineering solutions to even the most complex clean room challenges.",
               },
               {
                 name: "Dr. Anna Bauer",
                 position: "Quality Assurance Manager",
-                image: "/placeholder.svg?height=400&width=400",
+                image: "/images/cleanroom-corridor.png",
                 bio: "Anna ensures all our projects meet rigorous regulatory requirements and quality standards.",
               },
             ].map((member, index) => (
@@ -184,7 +265,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 bg-muted">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -235,19 +316,14 @@ export default function AboutPage() {
             </div>
 
             <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl">
-              <Image
-                src="/placeholder.svg?height=1000&width=800"
-                alt="RTTechnik values"
-                fill
-                className="object-cover"
-              />
+              <Image src="/images/cleanroom-red-doors.png" alt="RTTechnik values" fill className="object-cover" />
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16">
+      <section className="py-16 bg-muted">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Work With Us?</h2>

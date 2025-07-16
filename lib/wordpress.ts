@@ -136,7 +136,10 @@ export async function getPosts(params?: {
 
   try {
     const response = await fetch(`${WORDPRESS_API_URL}/posts?${searchParams.toString()}`, {
-      next: { revalidate: 300 }, // Revalidate every 5 minutes
+      next: { revalidate: 60 }, // Revalidate every minute for automatic refresh
+      headers: {
+        "Cache-Control": "no-cache",
+      },
     })
 
     if (!response.ok) {
@@ -161,7 +164,10 @@ export async function getPost(slug: string, lang?: string): Promise<WordPressPos
 
   try {
     const response = await fetch(`${WORDPRESS_API_URL}/posts?${searchParams.toString()}`, {
-      next: { revalidate: 300 },
+      next: { revalidate: 60 }, // Revalidate every minute
+      headers: {
+        "Cache-Control": "no-cache",
+      },
     })
 
     if (!response.ok) {
@@ -182,7 +188,10 @@ export async function getCategories(lang?: string): Promise<WordPressCategory[]>
 
   try {
     const response = await fetch(`${WORDPRESS_API_URL}/categories?${searchParams.toString()}`, {
-      next: { revalidate: 3600 }, // Revalidate every hour
+      next: { revalidate: 300 }, // Revalidate every 5 minutes
+      headers: {
+        "Cache-Control": "no-cache",
+      },
     })
 
     if (!response.ok) {
@@ -201,7 +210,10 @@ export async function getFeaturedMedia(mediaId: number): Promise<WordPressMedia 
 
   try {
     const response = await fetch(`${WORDPRESS_API_URL}/media/${mediaId}`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 300 },
+      headers: {
+        "Cache-Control": "no-cache",
+      },
     })
 
     if (!response.ok) {

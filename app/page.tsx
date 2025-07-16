@@ -13,7 +13,7 @@ export default function Home() {
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=1080&width=1920"
+            src="/images/cleanroom-space.png"
             alt="Clean room facility"
             fill
             priority
@@ -128,7 +128,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <Button asChild variant="outline" className="animate-bounce-slow">
+            <Button asChild variant="outline" className="animate-bounce-slow bg-transparent">
               <Link href="/services">View All Services</Link>
             </Button>
           </div>
@@ -153,7 +153,16 @@ export default function Home() {
                   <div>
                     <h3 className="font-semibold text-lg">Unmatched Expertise</h3>
                     <p className="text-muted-foreground">
-                      Over 20 years of specialized experience in clean room solutions
+                      Over 25 years of specialized experience in clean room solutions
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-6 w-6 text-primary mr-3 mt-0.5 shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-lg">ISO 9001:2015 Certified</h3>
+                    <p className="text-muted-foreground">
+                      Quality management system certified to international standards
                     </p>
                   </div>
                 </li>
@@ -169,32 +178,33 @@ export default function Home() {
                 <li className="flex items-start">
                   <CheckCircle className="h-6 w-6 text-primary mr-3 mt-0.5 shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-lg">Quality Assurance</h3>
-                    <p className="text-muted-foreground">Rigorous quality control processes to ensure excellence</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-6 w-6 text-primary mr-3 mt-0.5 shrink-0" />
-                  <div>
                     <h3 className="font-semibold text-lg">Ongoing Support</h3>
                     <p className="text-muted-foreground">Comprehensive maintenance and service packages</p>
                   </div>
                 </li>
               </ul>
 
-              <div className="mt-8">
+              <div className="mt-8 flex items-center space-x-4">
                 <Button asChild className="relative overflow-hidden group">
                   <Link href="/about">
                     <span className="relative z-10">Learn About Our Company</span>
                     <span className="absolute inset-0 bg-primary-foreground translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
                   </Link>
                 </Button>
+                <div className="flex items-center space-x-2">
+                  <div className="relative h-8 w-10">
+                    <Image src="/images/iso-9001-logo.png" alt="ISO 9001 Certified" fill className="object-contain" />
+                  </div>
+                  <div className="relative h-8 w-10">
+                    <Image src="/images/bio-forum-member.png" alt="Bio Forum Member" fill className="object-contain" />
+                  </div>
+                </div>
               </div>
             </div>
 
             <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl animate-fade-in-right">
               <Image
-                src="/placeholder.svg?height=1000&width=800"
+                src="/images/cleanroom-lab.png"
                 alt="RTTechnik clean room project"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -274,8 +284,90 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Clean Room Gallery Section */}
       <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
+            <Badge className="mb-4">Our Work</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">State-of-the-Art Clean Room Facilities</h2>
+            <p className="text-muted-foreground text-lg">
+              Explore our portfolio of completed clean room projects showcasing cutting-edge technology and precision
+              engineering.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card
+              className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
+              style={{ animationDelay: "100ms" }}
+            >
+              <div className="relative h-64">
+                <Image
+                  src="/images/cleanroom-personnel.png"
+                  alt="Clean room with personnel in protective suits"
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-2">Pharmaceutical Manufacturing</h3>
+                <p className="text-muted-foreground">
+                  ISO Class 5 clean room for sterile pharmaceutical production with advanced contamination control.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card
+              className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
+              style={{ animationDelay: "200ms" }}
+            >
+              <div className="relative h-64">
+                <Image
+                  src="/images/cleanroom-corridor.png"
+                  alt="Clean room corridor with glass walls"
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-2">Research Facility</h3>
+                <p className="text-muted-foreground">
+                  Modern clean room complex with modular design for biotechnology research and development.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card
+              className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
+              style={{ animationDelay: "300ms" }}
+            >
+              <div className="relative h-64">
+                <Image
+                  src="/images/cleanroom-changing.png"
+                  alt="Clean room changing area with lockers"
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-2">Support Facilities</h3>
+                <p className="text-muted-foreground">
+                  Comprehensive changing rooms and support areas designed for optimal workflow and compliance.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center mt-12">
+            <Button asChild variant="outline" className="animate-bounce-slow bg-transparent">
+              <Link href="/gallery">View Complete Gallery</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-16 md:py-24 bg-muted">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
             <Badge className="mb-4">Testimonials</Badge>
@@ -290,7 +382,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-muted">
+      <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Clean Room Project?</h2>

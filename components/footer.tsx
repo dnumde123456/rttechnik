@@ -25,6 +25,16 @@ export default function Footer() {
                 ? "Eksperci w projektowaniu, wykonywaniu i serwisowaniu pomieszczeń czystych dla przemysłu farmaceutycznego, medycznego i biotechnologicznego."
                 : "Experts in designing, executing, and servicing clean rooms for the pharmaceutical, medical, and biotechnology industries."}
             </p>
+
+            {/* ISO Certification */}
+            <div className="flex items-center space-x-3 mt-4">
+              <div className="relative h-12 w-16">
+                <Image src="/images/iso-9001-logo.png" alt="ISO 9001 Certified" fill className="object-contain" />
+              </div>
+              <div className="relative h-12 w-16">
+                <Image src="/images/bio-forum-member.png" alt="Bio Forum Member" fill className="object-contain" />
+              </div>
+            </div>
           </div>
 
           <div className="space-y-4">
@@ -125,20 +135,24 @@ export default function Footer() {
               <li className="flex items-start">
                 <MapPin className="mr-2 h-5 w-5 shrink-0" />
                 <span className="text-primary-foreground/80">
-                  RTTechnik Headquarters, 123 Clean Tech Street, Vienna, Austria
+                  RTTechnik
+                  <br />
+                  Ziębicka 35/116
+                  <br />
+                  60-164 Poznań, Poland
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone className="mr-2 h-5 w-5 shrink-0" />
-                <span className="text-primary-foreground/80">+43 123 456 789</span>
+                <span className="text-primary-foreground/80">+48 61 670 78 58</span>
               </li>
               <li className="flex items-center">
                 <Mail className="mr-2 h-5 w-5 shrink-0" />
                 <a
-                  href="mailto:info@rttechnik.com"
+                  href="mailto:office@rttechnik.com"
                   className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
                 >
-                  info@rttechnik.com
+                  office@rttechnik.com
                 </a>
               </li>
             </ul>
