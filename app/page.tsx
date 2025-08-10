@@ -5,8 +5,19 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, ArrowRight, Building2, Microscope, Cog, Award, Users, Clock } from "lucide-react"
 import TestimonialCarousel from "@/components/testimonial-carousel"
+import { getPosts, stripHtml } from "@/lib/wordpress"
+import { format } from "date-fns"
 
-export default function Home() {
+export default async function Home() {
+  let posts: any[] = []
+
+  try {
+    const postsData = await getPosts({ per_page: 3 })
+    posts = postsData.posts || []
+  } catch (error) {
+    console.error("Error fetching posts:", error)
+  }
+
   return (
     <>
       {/* Hero Section */}
@@ -70,13 +81,13 @@ export default function Home() {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Building2 className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Design & Planning</h3>
+                <h3 className="text-xl font-bold">Concept Development</h3>
                 <p className="text-muted-foreground">
-                  Custom clean room design using advanced 3D technology to visualize your project before construction
-                  begins.
+                  Comprehensive concept development tailored to your specific industry requirements and regulatory
+                  standards.
                 </p>
                 <Link
-                  href="/services#design"
+                  href="/services#concept"
                   className="inline-flex items-center text-primary font-medium hover:underline group"
                 >
                   Learn more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -92,12 +103,13 @@ export default function Home() {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Cog className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Installation & Setup</h3>
+                <h3 className="text-xl font-bold">Design & Engineering</h3>
                 <p className="text-muted-foreground">
-                  Professional installation of clean rooms with high-quality materials and energy-efficient designs.
+                  Advanced 3D design and engineering solutions using cutting-edge technology for optimal clean room
+                  performance.
                 </p>
                 <Link
-                  href="/services#installation"
+                  href="/services#design"
                   className="inline-flex items-center text-primary font-medium hover:underline group"
                 >
                   Learn more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -113,12 +125,13 @@ export default function Home() {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Microscope className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Qualification & Validation</h3>
+                <h3 className="text-xl font-bold">Complete Installation Delivery</h3>
                 <p className="text-muted-foreground">
-                  Comprehensive testing and validation to ensure your clean room meets all regulatory requirements.
+                  Full turnkey delivery of complete installations with high-quality materials and energy-efficient
+                  designs.
                 </p>
                 <Link
-                  href="/services#qualification"
+                  href="/services#installation"
                   className="inline-flex items-center text-primary font-medium hover:underline group"
                 >
                   Learn more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -289,83 +302,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Clean Room Gallery Section */}
+      {/* Blog Preview Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
-            <Badge className="mb-4">Our Work</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">State-of-the-Art Clean Room Facilities</h2>
+            <Badge className="mb-4">Latest Articles</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Industry Insights & News</h2>
             <p className="text-muted-foreground text-lg">
-              Explore our portfolio of completed clean room projects showcasing cutting-edge technology and precision
-              engineering.
+              Stay updated with the latest developments in clean room technology and industry best practices.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card
-              className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
-              style={{ animationDelay: "100ms" }}
-            >
-              <div className="relative h-64">
-                <Image
-                  src="/images/cleanroom-personnel.png"
-                  alt="Clean room with personnel in protective suits"
-                  fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">Pharmaceutical Manufacturing</h3>
-                <p className="text-muted-foreground">
-                  ISO Class 5 clean room for sterile pharmaceutical production with advanced contamination control.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card
-              className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
-              style={{ animationDelay: "200ms" }}
-            >
-              <div className="relative h-64">
-                <Image
-                  src="/images/cleanroom-corridor.png"
-                  alt="Clean room corridor with glass walls"
-                  fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">Research Facility</h3>
-                <p className="text-muted-foreground">
-                  Modern clean room complex with modular design for biotechnology research and development.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card
-              className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
-              style={{ animationDelay: "300ms" }}
-            >
-              <div className="relative h-64">
-                <Image
-                  src="/images/cleanroom-changing.png"
-                  alt="Clean room changing area with lockers"
-                  fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">Support Facilities</h3>
-                <p className="text-muted-foreground">
-                  Comprehensive changing rooms and support areas designed for optimal workflow and compliance.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          {posts.length === 0 ? (
+            <p className="text-center text-muted-foreground">No blog posts available at the moment.</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.slice(0, 3).map((post) => (
+                <Card
+                  key={post.slug}
+                  className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src="/placeholder.svg?height=200&width=400&text=Blog+Post"
+                      alt={stripHtml(post.title.rendered)}
+                      fill
+                      className="object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold mb-2 line-clamp-2">{stripHtml(post.title.rendered)}</h3>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      Published on {format(new Date(post.date), "PPP")}
+                    </p>
+                    <div
+                      className="text-muted-foreground text-sm line-clamp-3 mb-4"
+                      dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
+                    />
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="inline-flex items-center text-primary font-medium hover:underline group"
+                    >
+                      Read more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
 
           <div className="text-center mt-12">
             <Button asChild variant="outline" className="animate-bounce-slow bg-transparent">
-              <Link href="/gallery">View Complete Gallery</Link>
+              <Link href="/blog">View All Articles</Link>
             </Button>
           </div>
         </div>
@@ -400,7 +388,7 @@ export default function Home() {
                 <Link href="/contact">Request a Consultation</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/gallery">View Our Projects</Link>
+                <Link href="/blog">Read Our Articles</Link>
               </Button>
             </div>
           </div>

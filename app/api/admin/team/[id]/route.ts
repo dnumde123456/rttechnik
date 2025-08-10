@@ -1,81 +1,113 @@
 import { type NextRequest, NextResponse } from "next/server"
-import jwt from "jsonwebtoken"
+import { createClient } from "@supabase/supabase-js"
+import { cookies } from "next/headers"
 
-// In-memory storage (replace with database in production)
-const teamMembers: any[] = [
-  {
-    id: "1",
-    nameEn: "Bernhard Zach",
-    namePl: "Bernhard Zach",
-    titleEn: "Managing Director",
-    titlePl: "Dyrektor Zarządzający",
-    bio: "Experienced leader in cleanroom technology with over 20 years in the industry.",
-    image: "/images/team-placeholder.png",
-    order: 1,
-  },
-  {
-    id: "2",
-    nameEn: "Anna Kowalski",
-    namePl: "Anna Kowalski",
-    titleEn: "Project Manager",
-    titlePl: "Kierownik Projektów",
-    bio: "Specialist in cleanroom design and implementation.",
-    image: "/images/team-placeholder.png",
-    order: 2,
-  },
-  {
-    id: "3",
-    nameEn: "Marek Nowak",
-    namePl: "Marek Nowak",
-    titleEn: "Technical Specialist",
-    titlePl: "Specjalista Techniczny",
-    bio: "Expert in HVAC systems and cleanroom validation.",
-    image: "/images/team-placeholder.png",
-    order: 3,
-  },
-]
+const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!)
 
-function verifyToken(request: NextRequest) {
-  const authHeader = request.headers.get("authorization")
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    throw new Error("No token provided")
+async function verifyAdmin(request: NextRequest) {
+  const cookieStore = await cookies()
+  const token = cookieStore.get("admin-token")?.value
+
+  if (!token) {
+    return false
   }
 
-  const token = authHeader.substring(7)
-  jwt.verify(token, process.env.JWT_SECRET || "fallback-secret")
+  try {
+    const response = await fetch(`${request.nextUrl.origin}/api/admin/verify`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    return response.ok
+  } catch {
+    return false
+  }
+}
+
+async function uploadImage(file: File): Promise<string | null> {
+  try {
+    const fileExt = file.name.split(".").pop()
+    const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`
+    const filePath = `team-images/${fileName}`
+
+    const { data, error } = await supabase.storage.from("team-images").upload(filePath, file)
+
+    if (error) {
+      console.error("Storage upload error:", error)
+      return null
+    }
+
+    const {
+      data: { publicUrl },
+    } = supabase.storage.from("team-images").getPublicUrl(filePath)
+
+    return publicUrl
+  } catch (error) {
+    console.error("Error uploading image:", error)
+    return null
+  }
 }
 
 export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
   try {
-    verifyToken(request)
-    const memberData = await request.json()
-    const { id } = params
-
-    const memberIndex = teamMembers.findIndex((member) => member.id === id)
-    if (memberIndex === -1) {
-      return NextResponse.json({ error: "Member not found" }, { status: 404 })
+    const isAdmin = await verifyAdmin(request)
+    if (!isAdmin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    teamMembers[memberIndex] = { ...memberData, id }
-    return NextResponse.json(teamMembers[memberIndex])
+    const { id } = params
+    const formData = await request.formData()
+    const name = formData.get("name") as string
+    const position = formData.get("position") as string
+    const bio = formData.get("bio") as string
+    const imageFile = formData.get("image") as File | null
+
+    const updateData: any = {
+      name,
+      position,
+      bio,
+    }
+
+    if (imageFile && imageFile.size > 0) {
+      const imageUrl = await uploadImage(imageFile)
+      if (imageUrl) {
+        updateData.image = imageUrl
+      }
+    }
+
+    const { data, error } = await supabase.from("team_members").update(updateData).eq("id", id).select()
+
+    if (error) {
+      console.error("Supabase error:", error)
+      return NextResponse.json({ error: "Failed to update team member" }, { status: 500 })
+    }
+
+    return NextResponse.json(data[0])
   } catch (error) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    console.error("Error updating team member:", error)
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
   }
 }
 
 export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
   try {
-    verifyToken(request)
-    const { id } = params
-
-    const memberIndex = teamMembers.findIndex((member) => member.id === id)
-    if (memberIndex === -1) {
-      return NextResponse.json({ error: "Member not found" }, { status: 404 })
+    const isAdmin = await verifyAdmin(request)
+    if (!isAdmin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    teamMembers.splice(memberIndex, 1)
+    const { id } = params
+
+    const { error } = await supabase.from("team_members").delete().eq("id", id)
+
+    if (error) {
+      console.error("Supabase error:", error)
+      return NextResponse.json({ error: "Failed to delete team member" }, { status: 500 })
+    }
+
     return NextResponse.json({ success: true })
   } catch (error) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    console.error("Error deleting team member:", error)
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
   }
 }

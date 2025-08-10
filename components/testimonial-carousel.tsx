@@ -3,153 +3,171 @@
 import { useState, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
+import { ChevronLeft, ChevronRight, Star } from "lucide-react"
+import Image from "next/image"
+
+interface Testimonial {
+  quote: string
+  author: string
+  title: string
+  avatar: string
+}
+
+const englishTestimonials: Testimonial[] = [
+  {
+    quote:
+      "RTTechnik delivered a state-of-the-art clean room that exceeded our expectations. Their professionalism and expertise were outstanding.",
+    author: "Dr. Sarah Johnson",
+    title: "CEO, PharmaCorp",
+    avatar: "/placeholder.svg?height=64&width=64&text=SJ",
+  },
+  {
+    quote:
+      "The modular clean room provided by RTTechnik was installed efficiently and perfectly met our stringent requirements for electronics manufacturing.",
+    author: "Michael Chen",
+    title: "Operations Manager, ElectroTech",
+    avatar: "/placeholder.svg?height=64&width=64&text=MC",
+  },
+  {
+    quote:
+      "Exceptional quality and service from start to finish. RTTechnik is our go-to partner for all clean room needs.",
+    author: "Prof. Emma Wilson",
+    title: "Research Director, BioGen Labs",
+    avatar: "/placeholder.svg?height=64&width=64&text=EW",
+  },
+  {
+    quote:
+      "The attention to detail and commitment to quality standards made RTTechnik the perfect choice for our pharmaceutical facility.",
+    author: "Dr. James Rodriguez",
+    title: "Quality Director, MedTech Solutions",
+    avatar: "/placeholder.svg?height=64&width=64&text=JR",
+  },
+  {
+    quote:
+      "Outstanding project management and technical expertise. Our clean room was delivered on time and within budget.",
+    author: "Lisa Thompson",
+    title: "Facility Manager, BioPharm Inc.",
+    avatar: "/placeholder.svg?height=64&width=64&text=LT",
+  },
+]
+
+const polishTestimonials: Testimonial[] = [
+  {
+    quote:
+      "RTTechnik dostarczył nam najnowocześniejsze pomieszczenie czyste, które przerosło nasze oczekiwania. Ich profesjonalizm i wiedza były wybitne.",
+    author: "Dr Anna Kowalska",
+    title: "CEO, PharmaCorp",
+    avatar: "/placeholder.svg?height=64&width=64&text=AK",
+  },
+  {
+    quote:
+      "Modułowe pomieszczenie czyste dostarczone przez RTTechnik zostało zainstalowane sprawnie i doskonale spełniło nasze rygorystyczne wymagania dotyczące produkcji elektroniki.",
+    author: "Inż. Piotr Nowak",
+    title: "Kierownik Operacyjny, ElectroTech",
+    avatar: "/placeholder.svg?height=64&width=64&text=PN",
+  },
+  {
+    quote:
+      "Wyjątkowa jakość i obsługa od początku do końca. RTTechnik to nasz główny partner we wszystkich potrzebach związanych z pomieszczeniami czystymi.",
+    author: "Prof. Maria Zielińska",
+    title: "Kierownik Badań, BioGen Labs",
+    avatar: "/placeholder.svg?height=64&width=64&text=MZ",
+  },
+  {
+    quote:
+      "Dbałość o szczegóły i zaangażowanie w standardy jakości sprawiły, że RTTechnik był idealnym wyborem dla naszego zakładu farmaceutycznego.",
+    author: "Dr Jakub Wiśniewski",
+    title: "Dyrektor Jakości, MedTech Solutions",
+    avatar: "/placeholder.svg?height=64&width=64&text=JW",
+  },
+  {
+    quote:
+      "Wybitne zarządzanie projektem i wiedza techniczna. Nasze pomieszczenie czyste zostało dostarczone na czas i w ramach budżetu.",
+    author: "Anna Lewandowska",
+    title: "Kierownik Obiektu, BioPharm Inc.",
+    avatar: "/placeholder.svg?height=64&width=64&text=AL",
+  },
+]
 
 interface TestimonialCarouselProps {
   isPolish?: boolean
 }
 
 export default function TestimonialCarousel({ isPolish = false }: TestimonialCarouselProps) {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [autoplay, setAutoplay] = useState(true)
+  const testimonials = isPolish ? polishTestimonials : englishTestimonials
+  const [currentIndex, setCurrentIndex] = useState(0)
 
-  const testimonials = isPolish
-    ? [
-        {
-          id: 1,
-          name: "Dr. Sarah Johnson",
-          position: "Kierownik Działu R&D, PharmaTech Inc.",
-          content:
-            "RTTechnik dostarczył nasz projekt pomieszczenia czystego na czas i w ramach budżetu. Ich dbałość o szczegóły i wiedza techniczna przekroczyły nasze oczekiwania. Od tego czasu zleciliśmy im dwa dodatkowe obiekty.",
-        },
-        {
-          id: 2,
-          name: "Michael Schmidt",
-          position: "Dyrektor Operacyjny, BioMed Solutions",
-          content:
-            "Współpraca z RTTechnik była bezproblemowym doświadczeniem od projektu do wdrożenia. Wiedza ich zespołu na temat wymogów regulacyjnych zaoszczędziła nam znaczną ilość czasu w procesie walidacji.",
-        },
-        {
-          id: 3,
-          name: "Dr. Elena Petrova",
-          position: "CEO, NovaCure Laboratories",
-          content:
-            "Jakość pracy RTTechnik jest wyjątkowa. Nasze pomieszczenie czyste działa od trzech lat z minimalnymi problemami konserwacyjnymi. Ich ciągłe wsparcie jest nieocenione dla naszej działalności.",
-        },
-        {
-          id: 4,
-          name: "Thomas Weber",
-          position: "Kierownik Obiektu, MedDevice GmbH",
-          content:
-            "Energooszczędny projekt RTTechnik znacznie obniżył nasze koszty operacyjne przy jednoczesnym zachowaniu najwyższych standardów czystości. Ich innowacyjne podejście wyróżnia ich na tle konkurencji.",
-        },
-      ]
-    : [
-        {
-          id: 1,
-          name: "Dr. Sarah Johnson",
-          position: "Head of R&D, PharmaTech Inc.",
-          content:
-            "RTTechnik delivered our clean room project on time and within budget. Their attention to detail and technical expertise exceeded our expectations. We've since contracted them for two additional facilities.",
-        },
-        {
-          id: 2,
-          name: "Michael Schmidt",
-          position: "Operations Director, BioMed Solutions",
-          content:
-            "Working with RTTechnik has been a seamless experience from design to implementation. Their team's knowledge of regulatory requirements saved us significant time in the validation process.",
-        },
-        {
-          id: 3,
-          name: "Dr. Elena Petrova",
-          position: "CEO, NovaCure Laboratories",
-          content:
-            "The quality of RTTechnik's work is outstanding. Our clean room has been operational for three years with minimal maintenance issues. Their ongoing support has been invaluable to our operations.",
-        },
-        {
-          id: 4,
-          name: "Thomas Weber",
-          position: "Facility Manager, MedDevice GmbH",
-          content:
-            "RTTechnik's energy-efficient design has reduced our operational costs significantly while maintaining the highest standards of cleanliness. Their innovative approach sets them apart from competitors.",
-        },
-      ]
+  const nextTestimonial = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length)
+  }
+
+  const prevTestimonial = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length)
+  }
 
   useEffect(() => {
-    if (!autoplay) return
-
-    const interval = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % testimonials.length)
-    }, 5000)
-
+    const interval = setInterval(nextTestimonial, 5000)
     return () => clearInterval(interval)
-  }, [autoplay, testimonials.length])
-
-  const handlePrevious = () => {
-    setAutoplay(false)
-    setActiveIndex((current) => (current - 1 + testimonials.length) % testimonials.length)
-  }
-
-  const handleNext = () => {
-    setAutoplay(false)
-    setActiveIndex((current) => (current + 1) % testimonials.length)
-  }
+  }, [testimonials.length])
 
   return (
-    <div className="relative">
-      <div className="overflow-hidden">
-        <div
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-        >
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
-              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow">
-                <CardContent className="p-8">
-                  <Quote className="h-10 w-10 text-primary/20 mb-4 animate-float" />
-                  <p className="text-lg mb-6 italic">{testimonial.content}</p>
-                  <div>
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.position}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </div>
-      </div>
+    <div className="relative max-w-4xl mx-auto">
+      <Card className="border-none shadow-xl bg-white/50 backdrop-blur-sm">
+        <CardContent className="p-8 md:p-12">
+          <div className="flex justify-center mb-6">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="h-6 w-6 text-yellow-400 fill-current" />
+            ))}
+          </div>
 
-      <div className="flex justify-center mt-8 gap-2">
+          <blockquote className="text-lg md:text-xl text-center text-gray-700 mb-8 leading-relaxed">
+            "{testimonials[currentIndex].quote}"
+          </blockquote>
+
+          <div className="flex items-center justify-center space-x-4">
+            <div className="relative h-16 w-16 rounded-full overflow-hidden">
+              <Image
+                src={testimonials[currentIndex].avatar || "/placeholder.svg"}
+                alt={testimonials[currentIndex].author}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="text-center">
+              <div className="font-semibold text-gray-900">{testimonials[currentIndex].author}</div>
+              <div className="text-sm text-gray-600">{testimonials[currentIndex].title}</div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="flex justify-center items-center mt-8 space-x-4">
         <Button
           variant="outline"
           size="icon"
-          onClick={handlePrevious}
-          aria-label={isPolish ? "Poprzednia opinia" : "Previous testimonial"}
-          className="hover:scale-110 transition-transform"
+          onClick={prevTestimonial}
+          className="rounded-full bg-white/80 hover:bg-white"
         >
           <ChevronLeft className="h-4 w-4" />
         </Button>
 
-        {testimonials.map((_, index) => (
-          <Button
-            key={index}
-            variant="ghost"
-            size="sm"
-            className={`w-2 h-2 rounded-full p-0 min-w-0 ${index === activeIndex ? "bg-primary" : "bg-muted"}`}
-            onClick={() => {
-              setAutoplay(false)
-              setActiveIndex(index)
-            }}
-            aria-label={isPolish ? `Przejdź do opinii ${index + 1}` : `Go to testimonial ${index + 1}`}
-          />
-        ))}
+        <div className="flex space-x-2">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`w-3 h-3 rounded-full transition-colors ${
+                index === currentIndex ? "bg-primary" : "bg-gray-300"
+              }`}
+            />
+          ))}
+        </div>
 
         <Button
           variant="outline"
           size="icon"
-          onClick={handleNext}
-          aria-label={isPolish ? "Następna opinia" : "Next testimonial"}
-          className="hover:scale-110 transition-transform"
+          onClick={nextTestimonial}
+          className="rounded-full bg-white/80 hover:bg-white"
         >
           <ChevronRight className="h-4 w-4" />
         </Button>

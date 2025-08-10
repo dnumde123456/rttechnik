@@ -1,499 +1,364 @@
 import Image from "next/image"
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { Building2, Cog, Microscope, GraduationCap, Wrench, CheckCircle, ArrowRight } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { CheckCircle, Building2, Microscope, Cog, Settings, Users, Award } from "lucide-react"
 
 export default function ServicesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20">
-        <div className="container mx-auto px-4">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/cleanroom-corridor-glass.png"
+            alt="Usługi pomieszczeń czystych"
+            fill
+            priority
+            className="object-cover brightness-[0.4]"
+          />
+        </div>
+        <div className="container relative z-10 mx-auto px-4">
           <div className="max-w-3xl animate-fade-in-up">
-            <Badge className="mb-4">Nasze Usługi</Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Kompleksowe Rozwiązania Pomieszczeń Czystych</h1>
-            <p className="text-lg text-muted-foreground mb-8">
-              Od koncepcji do realizacji i dalej, RTTechnik zapewnia kompleksowe usługi dla wszystkich potrzeb
-              związanych z pomieszczeniami czystymi, z niezrównaną precyzją i jakością.
+            <Badge className="mb-4 bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
+              Nasze Usługi
+            </Badge>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Kompleksowe Rozwiązania Pomieszczeń Czystych
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl">
+              Od początkowego opracowania koncepcji po bieżącą konserwację, zapewniamy kompletne rozwiązania pomieszczeń
+              czystych dostosowane do wymagań Twojej branży.
             </p>
+            <Button asChild size="lg" className="text-base animate-pulse-slow">
+              <a href="#services">Poznaj Nasze Usługi</a>
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Services Overview */}
-      <section id="overview" className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl animate-fade-in-left">
-              <Image
-                src="/images/cleanroom-modular-exterior.png"
-                alt="Przegląd usług RTTechnik"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-
-            <div className="animate-fade-in-right">
-              <Badge className="mb-4">Pełne Spektrum Usług</Badge>
-              <h2 className="text-3xl font-bold mb-6">Twój Partner na Każdym Etapie</h2>
-              <p className="text-muted-foreground mb-6">
-                RTTechnik oferuje pełen zakres usług wspierających Twój projekt pomieszczenia czystego od początkowej
-                koncepcji aż po bieżącą konserwację i wsparcie. Nasze zintegrowane podejście zapewnia płynną realizację
-                i optymalne wyniki.
-              </p>
-
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <div>
-                    <h3 className="font-semibold">Rozwój Koncepcji i Projektowanie</h3>
-                    <p className="text-muted-foreground">
-                      Niestandardowe rozwiązania dostosowane do Twoich konkretnych wymagań
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <div>
-                    <h3 className="font-semibold">Instalacja i Budowa</h3>
-                    <p className="text-muted-foreground">Profesjonalne wdrożenie z minimalnym zakłóceniem</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <div>
-                    <h3 className="font-semibold">Kwalifikacja i Walidacja</h3>
-                    <p className="text-muted-foreground">Kompleksowe testy zapewniające zgodność z przepisami</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <div>
-                    <h3 className="font-semibold">Szkolenia i Transfer Wiedzy</h3>
-                    <p className="text-muted-foreground">
-                      Zapewnienie, że Twój zespół może obsługiwać i utrzymywać obiekt
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <div>
-                    <h3 className="font-semibold">Konserwacja i Serwisowanie</h3>
-                    <p className="text-muted-foreground">
-                      Bieżące wsparcie w celu maksymalizacji wydajności i trwałości
-                    </p>
-                  </div>
-                </li>
-              </ul>
-
-              <Button asChild className="animate-pulse-slow">
-                <Link href="/pl/contact">Omów Swój Projekt</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Detailed Services */}
-      <section className="py-16 bg-muted">
+      {/* Services Grid */}
+      <section id="services" className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
-            <Badge className="mb-4">Nasza Specjalizacja</Badge>
-            <h2 className="text-3xl font-bold mb-6">Szczegółowa Oferta Usług</h2>
+            <Badge className="mb-4">Kompletne Rozwiązania</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Nasze Portfolio Usług</h2>
             <p className="text-muted-foreground text-lg">
-              Poznaj nasz kompleksowy zakres usług zaprojektowanych, aby spełnić wszystkie potrzeby związane z
-              pomieszczeniami czystymi z precyzją i doskonałością.
-            </p>
-          </div>
-
-          {/* Design Service */}
-          <div id="design" className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-            <div className="animate-fade-in-left">
-              <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                <Building2 className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Projektowanie i Planowanie Pomieszczeń Czystych</h3>
-              <p className="text-muted-foreground mb-4">
-                Nasz proces projektowania rozpoczyna się od dokładnego zrozumienia Twoich wymagań, przepływów pracy i
-                potrzeb regulacyjnych. Następnie tworzymy niestandardowe projekty pomieszczeń czystych, które
-                optymalizują przestrzeń, wydajność i zgodność.
-              </p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Zaawansowane modelowanie 3D i wizualizacja</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Analiza przepływu powietrza i kontroli zanieczyszczeń</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Energooszczędne i zrównoważone projekty</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Planowanie zgodności z przepisami</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Szczegółowa dokumentacja techniczna</span>
-                </li>
-              </ul>
-              <Link
-                href="/pl/contact"
-                className="inline-flex items-center text-primary font-medium hover:underline group"
-              >
-                Dowiedz się więcej o naszym procesie projektowania{" "}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-            <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl animate-fade-in-right">
-              <Image
-                src="/images/cleanroom-empty-large.png"
-                alt="Proces projektowania pomieszczenia czystego"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-          </div>
-
-          {/* Installation Service */}
-          <div id="installation" className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-            <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl lg:order-first animate-fade-in-left">
-              <Image
-                src="/images/cleanroom-large-machine.png"
-                alt="Instalacja pomieszczenia czystego"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            <div className="animate-fade-in-right">
-              <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                <Cog className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Instalacja i Budowa</h3>
-              <p className="text-muted-foreground mb-4">
-                Nasze doświadczone zespoły instalacyjne realizują projekt pomieszczenia czystego z precyzją i dbałością
-                o szczegóły. Zarządzamy całym procesem budowy, aby zapewnić minimalne zakłócenia w Twojej działalności.
-              </p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Kompleksowe usługi instalacyjne</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Wysokiej jakości materiały i komponenty</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Ścisłe przestrzeganie harmonogramów projektów</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Rygorystyczna kontrola jakości podczas budowy</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Kompleksowa integracja systemów</span>
-                </li>
-              </ul>
-              <Link
-                href="/pl/contact"
-                className="inline-flex items-center text-primary font-medium hover:underline group"
-              >
-                Dowiedz się więcej o naszym procesie instalacji{" "}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Qualification Service */}
-          <div id="qualification" className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-            <div className="animate-fade-in-left">
-              <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                <Microscope className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Kwalifikacja i Walidacja</h3>
-              <p className="text-muted-foreground mb-4">
-                Nasze kompleksowe usługi kwalifikacji i walidacji zapewniają, że Twoje pomieszczenie czyste spełnia
-                wszystkie wymagania regulacyjne i działa zgodnie ze specyfikacją. Dostarczamy szczegółową dokumentację
-                wspierającą Twoje wysiłki w zakresie zgodności.
-              </p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Kwalifikacja projektowa (DQ)</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Kwalifikacja instalacyjna (IQ)</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Kwalifikacja operacyjna (OQ)</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Kwalifikacja wydajnościowa (PQ)</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Kompleksowa dokumentacja walidacyjna</span>
-                </li>
-              </ul>
-              <Link
-                href="/pl/contact"
-                className="inline-flex items-center text-primary font-medium hover:underline group"
-              >
-                Dowiedz się więcej o naszym procesie kwalifikacji{" "}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-            <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl animate-fade-in-right">
-              <Image
-                src="/images/cleanroom-lab-equipment.png"
-                alt="Kwalifikacja pomieszczenia czystego"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-          </div>
-
-          {/* Training Service */}
-          <div id="training" className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-            <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl lg:order-first animate-fade-in-left">
-              <Image
-                src="/images/cleanroom-corridor-glass.png"
-                alt="Szkolenie z pomieszczeń czystych"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            <div className="animate-fade-in-right">
-              <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                <GraduationCap className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Szkolenia i Transfer Wiedzy</h3>
-              <p className="text-muted-foreground mb-4">
-                Zapewniamy kompleksowe szkolenia, aby upewnić się, że Twój zespół posiada wiedzę i umiejętności do
-                efektywnej obsługi i utrzymania pomieszczenia czystego. Nasze programy szkoleniowe są dostosowane do
-                Twoich konkretnych potrzeb i mogą być prowadzone na miejscu lub zdalnie.
-              </p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Procedury operacyjne i protokoły</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Konserwacja i rozwiązywanie problemów</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Praktyki kontroli zanieczyszczeń</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Wymagania zgodności z przepisami</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Dostosowane materiały szkoleniowe i dokumentacja</span>
-                </li>
-              </ul>
-              <Link
-                href="/pl/contact"
-                className="inline-flex items-center text-primary font-medium hover:underline group"
-              >
-                Dowiedz się więcej o naszych programach szkoleniowych{" "}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Servicing */}
-          <div id="servicing" className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in-left">
-              <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                <Wrench className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Konserwacja i Serwisowanie</h3>
-              <p className="text-muted-foreground mb-4">
-                Nasze kompleksowe programy konserwacji i serwisowania zapewniają, że Twoje pomieszczenie czyste nadal
-                działa z najwyższą wydajnością przez cały cykl życia. Oferujemy elastyczne pakiety serwisowe, aby
-                spełnić Twoje konkretne potrzeby i budżet.
-              </p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Programy konserwacji zapobiegawczej</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Usługi napraw awaryjnych</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Modernizacje i modyfikacje systemów</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Monitorowanie i optymalizacja wydajności</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
-                  <span>Testy zgodności i recertyfikacja</span>
-                </li>
-              </ul>
-              <Link
-                href="/pl/contact"
-                className="inline-flex items-center text-primary font-medium hover:underline group"
-              >
-                Dowiedz się więcej o naszych usługach konserwacji{" "}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-            <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl animate-fade-in-right">
-              <Image
-                src="/images/cleanroom-production-line.png"
-                alt="Konserwacja pomieszczenia czystego"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries We Serve */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
-            <Badge className="mb-4">Branże</Badge>
-            <h2 className="text-3xl font-bold mb-6">Specjalistyczne Rozwiązania dla Różnych Branż</h2>
-            <p className="text-muted-foreground text-lg">
-              Dostarczamy dostosowane rozwiązania pomieszczeń czystych dla szerokiej gamy branż, każda z unikalnymi
-              wymaganiami i standardami regulacyjnymi. Nasza wiedza obejmuje wiele sektorów, zapewniając, że możemy
-              dostarczyć idealne rozwiązanie pomieszczenia czystego dla Twoich konkretnych potrzeb.
+              Oferujemy kompleksową gamę usług, aby sprostać wszystkim potrzebom związanym z pomieszczeniami czystymi,
+              od początkowego planowania po długoterminowe wsparcie.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Opracowanie Koncepcji */}
             <Card
               className="border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
               style={{ animationDelay: "100ms" }}
             >
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Microscope className="h-6 w-6 text-primary" />
+              <CardContent className="p-8 space-y-6">
+                <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Building2 className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Farmaceutyka</h3>
-                <p className="text-muted-foreground">
-                  Pomieszczenia czyste zgodne z GMP dla produkcji farmaceutycznej, badań i rozwoju z rygorystyczną
-                  kontrolą zanieczyszczeń.
-                </p>
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Opracowanie Koncepcji</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Kompleksowe opracowanie koncepcji dostosowane do specyficznych wymagań branżowych i standardów
+                    regulacyjnych. Współpracujemy ściśle z Tobą, aby zrozumieć Twoje potrzeby i opracować optymalne
+                    rozwiązanie.
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Analiza wymagań specyficznych dla branży
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Ocena zgodności z przepisami
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Studia wykonalności
+                    </li>
+                  </ul>
+                </div>
               </CardContent>
             </Card>
 
+            {/* Projektowanie */}
             <Card
               className="border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
               style={{ animationDelay: "200ms" }}
             >
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Building2 className="h-6 w-6 text-primary" />
+              <CardContent className="p-8 space-y-6">
+                <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Cog className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Biotechnologia</h3>
-                <p className="text-muted-foreground">
-                  Specjalistyczne środowiska dla badań i produkcji biotechnologicznej, zaprojektowane do utrzymania
-                  sterylności i zapobiegania zanieczyszczeniom krzyżowym.
-                </p>
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Projektowanie</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Zaawansowane rozwiązania projektowe i inżynieryjne z wykorzystaniem najnowocześniejszej technologii
+                    dla optymalnej wydajności pomieszczeń czystych. Nasz doświadczony zespół tworzy szczegółowe plany i
+                    specyfikacje.
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Modelowanie i wizualizacja 3D
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Projektowanie systemów HVAC
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Szczegółowe specyfikacje techniczne
+                    </li>
+                  </ul>
+                </div>
               </CardContent>
             </Card>
 
+            {/* Dostawa Kompletnej Instalacji */}
             <Card
               className="border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
               style={{ animationDelay: "300ms" }}
             >
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Cog className="h-6 w-6 text-primary" />
+              <CardContent className="p-8 space-y-6">
+                <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Microscope className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Urządzenia Medyczne</h3>
-                <p className="text-muted-foreground">
-                  Pomieszczenia czyste sklasyfikowane według ISO dla produkcji i montażu urządzeń medycznych,
-                  zapewniające bezpieczeństwo i jakość produktów.
-                </p>
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Dostawa Kompletnej Instalacji</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Pełna dostawa kompletnych instalacji "pod klucz" z wysokiej jakości materiałami i energooszczędnymi
+                    projektami. Zajmujemy się każdym aspektem procesu instalacji.
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Dostawa projektów "pod klucz"
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Wysokiej jakości materiały
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Energooszczędne rozwiązania
+                    </li>
+                  </ul>
+                </div>
               </CardContent>
             </Card>
 
+            {/* Montaż i Koordynacja Prowadzonych Prac */}
             <Card
               className="border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
               style={{ animationDelay: "400ms" }}
             >
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Microscope className="h-6 w-6 text-primary" />
+              <CardContent className="p-8 space-y-6">
+                <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Settings className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Mikroelektronika</h3>
-                <p className="text-muted-foreground">
-                  Środowiska kontrolowane pod kątem cząstek dla produkcji półprzewodników i mikroelektroniki z ochroną
-                  ESD.
-                </p>
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Montaż i Koordynacja Prowadzonych Prac</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Profesjonalny montaż i koordynacja wszystkich prac budowlanych w celu zapewnienia bezproblemowej
+                    realizacji projektu. Nasz doświadczony zespół zarządza wszystkimi aspektami procesu budowy.
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Profesjonalne zespoły montażowe
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Koordynacja projektów
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Procesy kontroli jakości
+                    </li>
+                  </ul>
+                </div>
               </CardContent>
             </Card>
 
+            {/* Uruchomienie i Kwalifikacja */}
             <Card
               className="border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
               style={{ animationDelay: "500ms" }}
             >
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Building2 className="h-6 w-6 text-primary" />
+              <CardContent className="p-8 space-y-6">
+                <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Award className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Żywność i Napoje</h3>
-                <p className="text-muted-foreground">
-                  Higieniczne środowiska przetwarzania, które spełniają standardy HACCP i bezpieczeństwa żywności dla
-                  produkcji wolnej od zanieczyszczeń.
-                </p>
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Uruchomienie i Kwalifikacja</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Kompleksowe procedury uruchomienia i testy kwalifikacyjne, aby zapewnić, że pomieszczenie czyste
+                    spełnia wszystkie wymagania regulacyjne i standardy wydajności.
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Uruchomienie systemu
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Kwalifikacja wydajności
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Testy zgodności z przepisami
+                    </li>
+                  </ul>
+                </div>
               </CardContent>
             </Card>
 
+            {/* Szkolenie */}
             <Card
               className="border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
               style={{ animationDelay: "600ms" }}
             >
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Cog className="h-6 w-6 text-primary" />
+              <CardContent className="p-8 space-y-6">
+                <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Users className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Lotnictwo</h3>
-                <p className="text-muted-foreground">
-                  Precyzyjnie kontrolowane środowiska dla produkcji i montażu komponentów lotniczych z rygorystyczną
-                  kontrolą jakości.
-                </p>
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Szkolenie</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Kompleksowe programy szkoleniowe dla Twojego personelu, aby zapewnić właściwą obsługę i konserwację
+                    obiektu pomieszczenia czystego.
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Programy szkolenia operatorów
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Procedury konserwacji
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Protokoły bezpieczeństwa
+                    </li>
+                  </ul>
+                </div>
               </CardContent>
             </Card>
+
+            {/* Serwis */}
+            <Card
+              className="border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up md:col-span-2 lg:col-span-1"
+              style={{ animationDelay: "700ms" }}
+            >
+              <CardContent className="p-8 space-y-6">
+                <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Settings className="h-8 w-8 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Serwis</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Bieżące wsparcie serwisowe i konserwacyjne, aby zapewnić, że pomieszczenie czyste będzie działać z
+                    optymalną wydajnością przez cały okres użytkowania.
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Konserwacja zapobiegawcza
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Wsparcie awaryjne
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0" />
+                      Monitorowanie wydajności
+                    </li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-16 md:py-24 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
+            <Badge className="mb-4">Nasz Proces</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Jak Pracujemy</h2>
+            <p className="text-muted-foreground text-lg">
+              Nasza sprawdzona metodologia zapewnia pomyślną realizację projektu od początkowej konsultacji po bieżące
+              wsparcie.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+              <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-primary">1</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Konsultacja</h3>
+              <p className="text-muted-foreground text-sm">
+                Początkowa konsultacja w celu zrozumienia Twoich wymagań i oceny wykonalności projektu.
+              </p>
+            </div>
+
+            <div className="text-center animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+              <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-primary">2</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Projektowanie</h3>
+              <p className="text-muted-foreground text-sm">
+                Szczegółowa faza projektowania i inżynierii z modelowaniem 3D i specyfikacjami technicznymi.
+              </p>
+            </div>
+
+            <div className="text-center animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+              <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-primary">3</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Instalacja</h3>
+              <p className="text-muted-foreground text-sm">
+                Profesjonalna instalacja i montaż z rygorystycznymi procesami kontroli jakości.
+              </p>
+            </div>
+
+            <div className="text-center animate-fade-in-up" style={{ animationDelay: "400ms" }}>
+              <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-primary">4</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Wsparcie</h3>
+              <p className="text-muted-foreground text-sm">
+                Bieżące wsparcie, szkolenia i konserwacja w celu zapewnienia optymalnej wydajności.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-muted">
+      <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-            <h2 className="text-3xl font-bold mb-6">Gotowy, by Rozpocząć Swój Projekt Pomieszczenia Czystego?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Gotowy Rozpocząć Swój Projekt?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Skontaktuj się z naszym zespołem już dziś, aby uzyskać konsultację i odkryć, jak RTTechnik może dostarczyć
-              idealne rozwiązanie pomieszczenia czystego dla Twoich potrzeb.
+              Skontaktuj się z naszym zespołem już dziś, aby omówić wymagania dotyczące pomieszczenia czystego i odkryć,
+              jak możemy pomóc w realizacji Twojego projektu.
             </p>
-            <Button asChild size="lg" className="animate-pulse-slow">
-              <Link href="/pl/contact">Poproś o Konsultację</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button asChild size="lg" className="animate-pulse-slow">
+                <a href="/pl/contact">Uzyskaj Bezpłatną Konsultację</a>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <a href="/pl/about">Dowiedz Się Więcej o Nas</a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

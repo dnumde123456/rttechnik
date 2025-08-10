@@ -5,8 +5,19 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, ArrowRight, Building2, Microscope, Cog, Award, Users, Clock } from "lucide-react"
 import TestimonialCarousel from "@/components/testimonial-carousel"
+import { getPosts, stripHtml } from "@/lib/wordpress"
+import { format } from "date-fns"
 
-export default function Home() {
+export default async function Home() {
+  let posts: any[] = []
+
+  try {
+    const postsData = await getPosts({ per_page: 3, lang: "pl" })
+    posts = postsData.posts || []
+  } catch (error) {
+    console.error("Error fetching posts:", error)
+  }
+
   return (
     <>
       {/* Hero Section */}
@@ -70,13 +81,13 @@ export default function Home() {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Building2 className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Projektowanie i Planowanie</h3>
+                <h3 className="text-xl font-bold">Opracowanie Koncepcji</h3>
                 <p className="text-muted-foreground">
-                  Niestandardowe projektowanie pomieszczeń czystych z wykorzystaniem zaawansowanej technologii 3D do
-                  wizualizacji projektu przed rozpoczęciem budowy.
+                  Kompleksowe opracowanie koncepcji dostosowane do specyficznych wymagań branżowych i standardów
+                  regulacyjnych.
                 </p>
                 <Link
-                  href="/pl/services#design"
+                  href="/pl/services#concept"
                   className="inline-flex items-center text-primary font-medium hover:underline group"
                 >
                   Dowiedz się więcej{" "}
@@ -93,13 +104,13 @@ export default function Home() {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Cog className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Instalacja i Konfiguracja</h3>
+                <h3 className="text-xl font-bold">Projektowanie</h3>
                 <p className="text-muted-foreground">
-                  Profesjonalna instalacja pomieszczeń czystych z wykorzystaniem wysokiej jakości materiałów i
-                  energooszczędnych projektów.
+                  Zaawansowane rozwiązania projektowe i inżynieryjne z wykorzystaniem najnowocześniejszej technologii
+                  dla optymalnej wydajności pomieszczeń czystych.
                 </p>
                 <Link
-                  href="/pl/services#installation"
+                  href="/pl/services#design"
                   className="inline-flex items-center text-primary font-medium hover:underline group"
                 >
                   Dowiedz się więcej{" "}
@@ -116,13 +127,13 @@ export default function Home() {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Microscope className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Kwalifikacja i Walidacja</h3>
+                <h3 className="text-xl font-bold">Dostawa Kompletnej Instalacji</h3>
                 <p className="text-muted-foreground">
-                  Kompleksowe testy i walidacja, aby zapewnić, że pomieszczenie czyste spełnia wszystkie wymagania
-                  regulacyjne.
+                  Pełna dostawa kompletnych instalacji "pod klucz" z wysokiej jakości materiałami i energooszczędnymi
+                  projektami.
                 </p>
                 <Link
-                  href="/pl/services#qualification"
+                  href="/pl/services#installation"
                   className="inline-flex items-center text-primary font-medium hover:underline group"
                 >
                   Dowiedz się więcej{" "}
@@ -296,86 +307,60 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Clean Room Gallery Section */}
+      {/* Blog Preview Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
-            <Badge className="mb-4">Nasze Prace</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Najnowocześniejsze Pomieszczenia Czyste</h2>
+            <Badge className="mb-4">Najnowsze Artykuły</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Wiadomości i Spostrzeżenia Branżowe</h2>
             <p className="text-muted-foreground text-lg">
-              Poznaj nasze portfolio zrealizowanych projektów pomieszczeń czystych prezentujących najnowocześniejszą
-              technologię i precyzyjną inżynierię.
+              Bądź na bieżąco z najnowszymi osiągnięciami w technologii pomieszczeń czystych i najlepszymi praktykami
+              branżowymi.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card
-              className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
-              style={{ animationDelay: "100ms" }}
-            >
-              <div className="relative h-64">
-                <Image
-                  src="/images/cleanroom-personnel.png"
-                  alt="Pomieszczenie czyste z personelem w kombinezonach ochronnych"
-                  fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">Produkcja Farmaceutyczna</h3>
-                <p className="text-muted-foreground">
-                  Pomieszczenie czyste klasy ISO 5 do sterylnej produkcji farmaceutycznej z zaawansowaną kontrolą
-                  zanieczyszczeń.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card
-              className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
-              style={{ animationDelay: "200ms" }}
-            >
-              <div className="relative h-64">
-                <Image
-                  src="/images/cleanroom-corridor.png"
-                  alt="Korytarz pomieszczenia czystego ze szklanymi ścianami"
-                  fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">Ośrodek Badawczy</h3>
-                <p className="text-muted-foreground">
-                  Nowoczesny kompleks pomieszczeń czystych z modułową konstrukcją do badań i rozwoju
-                  biotechnologicznego.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card
-              className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
-              style={{ animationDelay: "300ms" }}
-            >
-              <div className="relative h-64">
-                <Image
-                  src="/images/cleanroom-changing.png"
-                  alt="Szatnia pomieszczenia czystego z szafkami"
-                  fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">Obiekty Pomocnicze</h3>
-                <p className="text-muted-foreground">
-                  Kompleksowe szatnie i obszary pomocnicze zaprojektowane dla optymalnego przepływu pracy i zgodności z
-                  przepisami.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          {posts.length === 0 ? (
+            <p className="text-center text-muted-foreground">W tej chwili nie ma dostępnych artykułów na blogu.</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.slice(0, 3).map((post) => (
+                <Card
+                  key={post.slug}
+                  className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src="/placeholder.svg?height=200&width=400&text=Artykuł+Blog"
+                      alt={stripHtml(post.title.rendered)}
+                      fill
+                      className="object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold mb-2 line-clamp-2">{stripHtml(post.title.rendered)}</h3>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      Opublikowano {format(new Date(post.date), "PPP")}
+                    </p>
+                    <div
+                      className="text-muted-foreground text-sm line-clamp-3 mb-4"
+                      dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
+                    />
+                    <Link
+                      href={`/pl/blog/${post.slug}`}
+                      className="inline-flex items-center text-primary font-medium hover:underline group"
+                    >
+                      Czytaj więcej{" "}
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
 
           <div className="text-center mt-12">
             <Button asChild variant="outline" className="animate-bounce-slow bg-transparent">
-              <Link href="/pl/gallery">Zobacz Pełną Galerię</Link>
+              <Link href="/pl/blog">Zobacz Wszystkie Artykuły</Link>
             </Button>
           </div>
         </div>
@@ -412,7 +397,7 @@ export default function Home() {
                 <Link href="/pl/contact">Poproś o Konsultację</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/pl/gallery">Zobacz Nasze Projekty</Link>
+                <Link href="/pl/blog">Przeczytaj Nasze Artykuły</Link>
               </Button>
             </div>
           </div>

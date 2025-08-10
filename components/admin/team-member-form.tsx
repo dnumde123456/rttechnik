@@ -2,198 +2,162 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Upload, X } from "lucide-react"
+import Image from "next/image"
 
 interface TeamMember {
   id?: string
-  nameEn: string
-  namePl: string
-  titleEn: string
-  titlePl: string
+  name: string
+  position: string
   bio: string
-  image: string
-  order: number
+  image?: string
 }
 
 interface TeamMemberFormProps {
-  editingMember?: TeamMember | null
-  onSave?: () => void
-  onCancel?: () => void
+  member?: TeamMember
+  onSubmit: (member: TeamMember, imageFile?: File) => void
+  onCancel: () => void
 }
 
-export default function TeamMemberForm({ editingMember, onSave, onCancel }: TeamMemberFormProps) {
+export default function TeamMemberForm({ member, onSubmit, onCancel }: TeamMemberFormProps) {
   const [formData, setFormData] = useState<TeamMember>({
-    nameEn: "",
-    namePl: "",
-    titleEn: "",
-    titlePl: "",
-    bio: "",
-    image: "/images/team-placeholder.png",
-    order: 0,
+    name: member?.name || "",
+    position: member?.position || "",
+    bio: member?.bio || "",
+    image: member?.image || "",
   })
-  const [loading, setLoading] = useState(false)
-  const [message, setMessage] = useState("")
+  const [imageFile, setImageFile] = useState<File | null>(null)
+  const [imagePreview, setImagePreview] = useState<string>(member?.image || "")
 
-  useEffect(() => {
-    if (editingMember) {
-      setFormData(editingMember)
-    }
-  }, [editingMember])
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setMessage("")
-
-    try {
-      const token = localStorage.getItem("adminToken")
-      const url = editingMember ? `/api/admin/team/${editingMember.id}` : "/api/admin/team"
-
-      const method = editingMember ? "PUT" : "POST"
-
-      const response = await fetch(url, {
-        method,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(formData),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        setMessage(editingMember ? "Team member updated successfully!" : "Team member added successfully!")
-        if (!editingMember) {
-          setFormData({
-            nameEn: "",
-            namePl: "",
-            titleEn: "",
-            titlePl: "",
-            bio: "",
-            image: "/images/team-placeholder.png",
-            order: 0,
-          })
-        }
-        onSave?.()
-      } else {
-        setMessage(data.error || "Operation failed")
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      setImageFile(file)
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string)
       }
-    } catch (error) {
-      setMessage("Network error occurred")
-    } finally {
-      setLoading(false)
+      reader.readAsDataURL(file)
     }
   }
 
-  const handleCancel = () => {
-    setFormData({
-      nameEn: "",
-      namePl: "",
-      titleEn: "",
-      titlePl: "",
-      bio: "",
-      image: "/images/team-placeholder.png",
-      order: 0,
-    })
-    onCancel?.()
+  const removeImage = () => {
+    setImageFile(null)
+    setImagePreview("")
+    setFormData((prev) => ({ ...prev, image: "" }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    onSubmit(formData, imageFile || undefined)
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <Label htmlFor="nameEn">Name (English)</Label>
-          <Input
-            id="nameEn"
-            value={formData.nameEn}
-            onChange={(e) => setFormData((prev) => ({ ...prev, nameEn: e.target.value }))}
-            required
-          />
-        </div>
-        <div>
-          <Label htmlFor="namePl">Name (Polish)</Label>
-          <Input
-            id="namePl"
-            value={formData.namePl}
-            onChange={(e) => setFormData((prev) => ({ ...prev, namePl: e.target.value }))}
-            required
-          />
-        </div>
-      </div>
+    <Card className="w-full max-w-2xl mx-auto">
+      <CardHeader>
+        <CardTitle>{member ? "Edit Team Member" : "Add New Team Member"}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Image Upload */}
+          <div className="space-y-2">
+            <Label htmlFor="image">Profile Image</Label>
+            <div className="flex items-center space-x-4">
+              {imagePreview ? (
+                <div className="relative">
+                  <Image
+                    src={imagePreview || "/placeholder.svg"}
+                    alt="Preview"
+                    width={100}
+                    height={100}
+                    className="rounded-lg object-cover"
+                  />
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    size="sm"
+                    className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0"
+                    onClick={removeImage}
+                  >
+                    <X className="h-3 w-3" />
+                  </Button>
+                </div>
+              ) : (
+                <div className="w-24 h-24 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
+                  <Upload className="h-8 w-8 text-gray-400" />
+                </div>
+              )}
+              <div>
+                <Input id="image" type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
+                <Label
+                  htmlFor="image"
+                  className="cursor-pointer inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                >
+                  Choose Image
+                </Label>
+              </div>
+            </div>
+          </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <Label htmlFor="titleEn">Title (English)</Label>
-          <Input
-            id="titleEn"
-            value={formData.titleEn}
-            onChange={(e) => setFormData((prev) => ({ ...prev, titleEn: e.target.value }))}
-            required
-          />
-        </div>
-        <div>
-          <Label htmlFor="titlePl">Title (Polish)</Label>
-          <Input
-            id="titlePl"
-            value={formData.titlePl}
-            onChange={(e) => setFormData((prev) => ({ ...prev, titlePl: e.target.value }))}
-            required
-          />
-        </div>
-      </div>
+          {/* Name */}
+          <div className="space-y-2">
+            <Label htmlFor="name">Name *</Label>
+            <Input
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+              placeholder="Enter team member's name"
+            />
+          </div>
 
-      <div>
-        <Label htmlFor="bio">Bio</Label>
-        <Textarea
-          id="bio"
-          value={formData.bio}
-          onChange={(e) => setFormData((prev) => ({ ...prev, bio: e.target.value }))}
-          rows={3}
-        />
-      </div>
+          {/* Position */}
+          <div className="space-y-2">
+            <Label htmlFor="position">Position *</Label>
+            <Input
+              id="position"
+              name="position"
+              value={formData.position}
+              onChange={handleInputChange}
+              required
+              placeholder="Enter position/title"
+            />
+          </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <Label htmlFor="image">Image URL</Label>
-          <Input
-            id="image"
-            value={formData.image}
-            onChange={(e) => setFormData((prev) => ({ ...prev, image: e.target.value }))}
-          />
-        </div>
-        <div>
-          <Label htmlFor="order">Display Order</Label>
-          <Input
-            id="order"
-            type="number"
-            value={formData.order}
-            onChange={(e) => setFormData((prev) => ({ ...prev, order: Number.parseInt(e.target.value) || 0 }))}
-          />
-        </div>
-      </div>
+          {/* Bio */}
+          <div className="space-y-2">
+            <Label htmlFor="bio">Bio</Label>
+            <Textarea
+              id="bio"
+              name="bio"
+              value={formData.bio}
+              onChange={handleInputChange}
+              placeholder="Enter a brief bio"
+              rows={4}
+            />
+          </div>
 
-      {message && (
-        <Alert variant={message.includes("successfully") ? "default" : "destructive"}>
-          <AlertDescription>{message}</AlertDescription>
-        </Alert>
-      )}
-
-      <div className="flex space-x-2">
-        <Button type="submit" disabled={loading}>
-          {loading ? "Saving..." : editingMember ? "Update" : "Add"} Team Member
-        </Button>
-        {editingMember && (
-          <Button type="button" variant="outline" onClick={handleCancel}>
-            Cancel
-          </Button>
-        )}
-      </div>
-    </form>
+          {/* Actions */}
+          <div className="flex justify-end space-x-2">
+            <Button type="button" variant="outline" onClick={onCancel}>
+              Cancel
+            </Button>
+            <Button type="submit">{member ? "Update" : "Add"} Team Member</Button>
+          </div>
+        </form>
+      </CardContent>
+    </Card>
   )
 }
