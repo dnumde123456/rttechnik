@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Mail, MapPin, Phone } from "lucide-react"
 import { usePathname } from "next/navigation"
 
 export default function Footer() {
@@ -10,48 +9,36 @@ export default function Footer() {
   const isPolish = pathname.startsWith("/pl")
 
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="bg-gray-900 text-white py-12">
+      <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <Link href={isPolish ? "/pl" : "/"} className="flex items-center">
+          {/* Company Info */}
+          <div className="col-span-1 md:col-span-2">
+            <div className="flex items-center mb-4">
               <div className="relative h-10 w-10 mr-2">
                 <Image src="/images/logo.png" alt="RTTechnik Logo" fill className="object-contain" />
               </div>
-              <span className="text-xl font-bold">RTTechnik</span>
-            </Link>
-            <p className="text-primary-foreground/80">
+              <span className="text-2xl font-bold">RTTechnik</span>
+            </div>
+            <p className="text-gray-300 mb-4">
               {isPolish
-                ? "Eksperci w projektowaniu, wykonywaniu i serwisowaniu pomieszczeń czystych dla przemysłu farmaceutycznego, medycznego i biotechnologicznego."
-                : "Experts in designing, executing, and servicing clean rooms for the pharmaceutical, medical, and biotechnology industries."}
+                ? "Wiodący dostawca rozwiązań cleanroom i technologii czystych pomieszczeń."
+                : "Leading provider of cleanroom solutions and clean environment technologies."}
             </p>
-
-            {/* ISO Certification */}
-            <div className="flex items-center space-x-3 mt-4">
-              <div className="relative h-12 w-16">
-                <Image src="/images/iso-9001-logo.png" alt="ISO 9001 Certified" fill className="object-contain" />
-              </div>
-              <div className="relative h-12 w-16">
-                <Image src="/images/bio-forum-member.png" alt="Bio Forum Member" fill className="object-contain" />
-              </div>
+            <div className="flex space-x-4">
+              <Image src="/images/iso-9001-logo.png" alt="ISO 9001" width={60} height={40} />
+              <Image src="/images/bio-forum-member.png" alt="Bio Forum Member" width={60} height={40} />
             </div>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">{isPolish ? "Szybkie linki" : "Quick Links"}</h3>
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">{isPolish ? "Szybkie linki" : "Quick Links"}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  href={isPolish ? "/pl" : "/"}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  {isPolish ? "Strona główna" : "Home"}
-                </Link>
-              </li>
-              <li>
-                <Link
                   href={isPolish ? "/pl/about" : "/about"}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
                   {isPolish ? "O nas" : "About Us"}
                 </Link>
@@ -59,132 +46,51 @@ export default function Footer() {
               <li>
                 <Link
                   href={isPolish ? "/pl/services" : "/services"}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
                   {isPolish ? "Usługi" : "Services"}
                 </Link>
               </li>
               <li>
                 <Link
-                  href={isPolish ? "/pl/gallery" : "/gallery"}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  href={isPolish ? "/pl/team" : "/team"}
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
-                  {isPolish ? "Galeria" : "Gallery"}
+                  {isPolish ? "Zespół" : "Our Team"}
                 </Link>
               </li>
               <li>
                 <Link
-                  href={isPolish ? "/pl/blog" : "/blog"}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  href={isPolish ? "/pl/contact" : "/contact"}
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
-                  {isPolish ? "Blog" : "Blog"}
+                  {isPolish ? "Kontakt" : "Contact"}
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">{isPolish ? "Usługi" : "Services"}</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href={isPolish ? "/pl/services#design" : "/services#design"}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  {isPolish ? "Projektowanie pomieszczeń czystych" : "Clean Room Design"}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={isPolish ? "/pl/services#installation" : "/services#installation"}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  {isPolish ? "Instalacja" : "Installation"}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={isPolish ? "/pl/services#qualification" : "/services#qualification"}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  {isPolish ? "Kwalifikacja" : "Qualification"}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={isPolish ? "/pl/services#training" : "/services#training"}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  {isPolish ? "Szkolenia" : "Training"}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={isPolish ? "/pl/services#servicing" : "/services#servicing"}
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  {isPolish ? "Serwisowanie" : "Servicing"}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">{isPolish ? "Kontakt" : "Contact Us"}</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <MapPin className="mr-2 h-5 w-5 shrink-0" />
-                <span className="text-primary-foreground/80">
-                  RTTechnik
-                  <br />
-                  Ziębicka 35/116
-                  <br />
-                  60-164 Poznań, Poland
-                </span>
-              </li>
-              <li className="flex items-center">
-                <Phone className="mr-2 h-5 w-5 shrink-0" />
-                <span className="text-primary-foreground/80">+48 61 670 78 58</span>
-              </li>
-              <li className="flex items-center">
-                <Mail className="mr-2 h-5 w-5 shrink-0" />
-                <a
-                  href="mailto:office@rttechnik.com"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  office@rttechnik.com
-                </a>
-              </li>
-            </ul>
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">{isPolish ? "Kontakt" : "Contact"}</h3>
+            <div className="space-y-2 text-gray-300">
+              <p>RTTechnik Sp. z o.o.</p>
+              <p>ul. Przykładowa 123</p>
+              <p>00-000 Warszawa</p>
+              <p>Tel: +48 123 456 789</p>
+              <p>Email: info@rttechnik.com</p>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-primary-foreground/20">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-primary-foreground/80 text-sm">
-              &copy; {new Date().getFullYear()} RTTechnik.{" "}
-              {isPolish ? "Wszelkie prawa zastrzeżone." : "All rights reserved."}
-            </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link
-                href={isPolish ? "/pl/privacy-policy" : "/privacy-policy"}
-                className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors"
-              >
-                {isPolish ? "Polityka prywatności" : "Privacy Policy"}
-              </Link>
-              <Link
-                href={isPolish ? "/pl/terms-of-service" : "/terms-of-service"}
-                className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors"
-              >
-                {isPolish ? "Warunki korzystania" : "Terms of Service"}
-              </Link>
-              <Link
-                href={isPolish ? "/pl/cookie-policy" : "/cookie-policy"}
-                className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors"
-              >
-                {isPolish ? "Polityka cookies" : "Cookie Policy"}
-              </Link>
-            </div>
+        <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-300 text-sm">
+            © 2024 RTTechnik. {isPolish ? "Wszystkie prawa zastrzeżone." : "All rights reserved."}
+          </p>
+          <div className="flex items-center space-x-4 mt-4 md:mt-0">
+            <Link href="/admin/login" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+              Admin
+            </Link>
           </div>
         </div>
       </div>

@@ -28,7 +28,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl">
               <Image
-                src="/images/cleanroom-personnel.png"
+                src="/images/cleanroom-lab-equipment.png"
                 alt="RTTechnik clean room professionals"
                 fill
                 className="object-cover"
@@ -76,77 +76,103 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ISO 9001 Certification Section */}
-      <section className="py-16 bg-muted">
+      {/* Enhanced ISO 9001 Certification Section */}
+      <section className="py-20 bg-gradient-to-br from-primary/5 to-primary/10">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="flex items-center mb-6">
-                <div className="h-16 w-16 rounded-lg bg-primary/10 flex items-center justify-center mr-4">
-                  <Shield className="h-8 w-8 text-primary" />
+              <div className="flex items-center mb-8">
+                <div className="h-20 w-20 rounded-xl bg-primary/15 flex items-center justify-center mr-6 shadow-lg">
+                  <Shield className="h-10 w-10 text-primary" />
                 </div>
                 <div>
-                  <Badge className="mb-2">Quality Assurance</Badge>
-                  <h2 className="text-3xl font-bold">ISO 9001:2015 Certified Excellence</h2>
+                  <Badge className="mb-3 bg-primary/20 text-primary">Quality Assurance Excellence</Badge>
+                  <h2 className="text-4xl font-bold">ISO 9001:2015 Certified</h2>
+                  <p className="text-primary font-medium mt-1">The Gold Standard in Quality Management</p>
                 </div>
               </div>
 
-              <p className="text-muted-foreground mb-6">
-                RTTechnik is proud to be ISO 9001:2015 certified, demonstrating our commitment to quality management
-                systems and continuous improvement. This certification ensures that every aspect of our operations meets
-                the highest international standards.
+              <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
+                RTTechnik is proud to be ISO 9001:2015 certified, demonstrating our unwavering commitment to quality
+                management systems and continuous improvement. This prestigious certification ensures that every aspect
+                of our operations meets the highest international standards.
               </p>
 
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
+              <div className="space-y-6 mb-10">
+                <div className="flex items-start bg-white/50 p-4 rounded-lg shadow-sm">
+                  <CheckCircle className="h-6 w-6 text-primary mr-4 mt-1 shrink-0" />
                   <div>
-                    <h3 className="font-semibold">Quality Management System</h3>
-                    <p className="text-muted-foreground text-sm">
-                      Systematic approach to quality control and assurance
+                    <h3 className="font-bold text-lg">Quality Management System</h3>
+                    <p className="text-muted-foreground">
+                      Systematic approach to quality control and assurance across all operations
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
+                <div className="flex items-start bg-white/50 p-4 rounded-lg shadow-sm">
+                  <CheckCircle className="h-6 w-6 text-primary mr-4 mt-1 shrink-0" />
                   <div>
-                    <h3 className="font-semibold">Continuous Improvement</h3>
-                    <p className="text-muted-foreground text-sm">Regular assessment and enhancement of processes</p>
+                    <h3 className="font-bold text-lg">Continuous Improvement</h3>
+                    <p className="text-muted-foreground">Regular assessment and enhancement of all processes</p>
                   </div>
                 </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
+                <div className="flex items-start bg-white/50 p-4 rounded-lg shadow-sm">
+                  <CheckCircle className="h-6 w-6 text-primary mr-4 mt-1 shrink-0" />
                   <div>
-                    <h3 className="font-semibold">Customer Satisfaction</h3>
-                    <p className="text-muted-foreground text-sm">Focus on meeting and exceeding client expectations</p>
+                    <h3 className="font-bold text-lg">Customer Satisfaction</h3>
+                    <p className="text-muted-foreground">Focus on meeting and exceeding client expectations</p>
                   </div>
                 </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 shrink-0" />
+                <div className="flex items-start bg-white/50 p-4 rounded-lg shadow-sm">
+                  <CheckCircle className="h-6 w-6 text-primary mr-4 mt-1 shrink-0" />
                   <div>
-                    <h3 className="font-semibold">Risk Management</h3>
-                    <p className="text-muted-foreground text-sm">Proactive identification and mitigation of risks</p>
+                    <h3 className="font-bold text-lg">Risk Management</h3>
+                    <p className="text-muted-foreground">Proactive identification and mitigation of risks</p>
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4">
-                <div className="relative h-16 w-20">
-                  <Image src="/images/iso-9001-logo.png" alt="ISO 9001 Certified" fill className="object-contain" />
-                </div>
-                <div className="relative h-16 w-20">
-                  <Image src="/images/bio-forum-member.png" alt="Bio Forum Member" fill className="object-contain" />
+              {/* Enhanced Certification Display */}
+              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-primary/20">
+                <h4 className="font-bold text-lg mb-4 text-center">Our Certifications & Memberships</h4>
+                <div className="flex items-center justify-center space-x-8">
+                  <div className="text-center">
+                    <div className="relative h-24 w-32 bg-gradient-to-br from-primary/10 to-primary/20 rounded-lg p-3 shadow-md hover:shadow-lg transition-shadow">
+                      <Image
+                        src="/images/iso-9001-llc-logo.png"
+                        alt="ISO 9001 Certified"
+                        fill
+                        className="object-contain p-2"
+                      />
+                    </div>
+                    <p className="text-sm font-medium mt-2">ISO 9001:2015</p>
+                    <p className="text-xs text-muted-foreground">Quality Management</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="relative h-24 w-32 bg-gradient-to-br from-primary/10 to-primary/20 rounded-lg p-3 shadow-md hover:shadow-lg transition-shadow">
+                      <Image
+                        src="/images/bio-forum-member.png"
+                        alt="Bio Forum Member"
+                        fill
+                        className="object-contain p-2"
+                      />
+                    </div>
+                    <p className="text-sm font-medium mt-2">Bio Forum</p>
+                    <p className="text-xs text-muted-foreground">Industry Member</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="relative h-[600px] rounded-xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/iso-certificate.png"
-                alt="RTTechnik ISO 9001:2015 Certificate"
-                fill
-                className="object-cover"
-              />
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/30 rounded-2xl blur-lg"></div>
+              <div className="relative h-[700px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                <Image
+                  src="/images/iso-certificate-english.png"
+                  alt="RTTechnik ISO 9001:2015 Certificate"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -196,70 +222,6 @@ export default function AboutPage() {
               <div className="text-4xl font-bold mb-2">15+</div>
               <p className="text-muted-foreground">Industry Awards</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <Badge className="mb-4">Our Team</Badge>
-            <h2 className="text-3xl font-bold mb-6">Meet the Experts Behind RTTechnik</h2>
-            <p className="text-muted-foreground text-lg">
-              Our team of highly skilled professionals brings together decades of combined experience in clean room
-              design, engineering, and implementation.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                name: "Dr. Robert Müller",
-                position: "Founder & CEO",
-                image: "/images/design-planning.png",
-                bio: "With over 30 years in the industry, Dr. Müller leads our company with vision and expertise.",
-              },
-              {
-                name: "Ing. Maria Schmidt",
-                position: "Technical Director",
-                image: "/images/cleanroom-lab.png",
-                bio: "Maria oversees all technical aspects of our projects, ensuring the highest standards of quality.",
-              },
-              {
-                name: "Dipl.-Ing. Thomas Weber",
-                position: "Head of Engineering",
-                image: "/images/cleanroom-space.png",
-                bio: "Thomas brings innovative engineering solutions to even the most complex clean room challenges.",
-              },
-              {
-                name: "Dr. Anna Bauer",
-                position: "Quality Assurance Manager",
-                image: "/images/cleanroom-corridor.png",
-                bio: "Anna ensures all our projects meet rigorous regulatory requirements and quality standards.",
-              },
-            ].map((member, index) => (
-              <Card key={index} className="overflow-hidden border-none shadow-lg">
-                <div className="relative h-64">
-                  <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover" />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold">{member.name}</h3>
-                  <p className="text-primary text-sm mb-3">{member.position}</p>
-                  <p className="text-muted-foreground">{member.bio}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="text-muted-foreground mb-6">
-              Our team extends beyond these key members to include specialized engineers, project managers, technicians,
-              and support staff – all dedicated to delivering excellence.
-            </p>
-            <Button asChild>
-              <Link href="/contact">Get in Touch With Our Team</Link>
-            </Button>
           </div>
         </div>
       </section>

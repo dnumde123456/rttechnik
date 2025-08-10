@@ -82,14 +82,14 @@ export default function Header() {
               {isPolish ? "Usługi" : "Services"}
             </Link>
             <Link
-              href={isPolish ? "/pl/gallery" : "/gallery"}
+              href={isPolish ? "/pl/team" : "/team"}
               className={cn(
                 "text-base font-medium hover:text-primary transition-colors",
                 "relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300",
-                pathname.endsWith("/gallery") ? "after:w-full" : "after:w-0 hover:after:w-full",
+                pathname.endsWith("/team") ? "after:w-full" : "after:w-0 hover:after:w-full",
               )}
             >
-              {isPolish ? "Galeria" : "Gallery"}
+              {isPolish ? "Zespół" : "Our Team"}
             </Link>
             <Link
               href={isPolish ? "/pl/blog" : "/blog"}
@@ -161,11 +161,11 @@ export default function Header() {
               {isPolish ? "Usługi" : "Services"}
             </Link>
             <Link
-              href={isPolish ? "/pl/gallery" : "/gallery"}
+              href={isPolish ? "/pl/team" : "/team"}
               className="text-base font-medium py-2 hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {isPolish ? "Galeria" : "Gallery"}
+              {isPolish ? "Zespół" : "Our Team"}
             </Link>
             <Link
               href={isPolish ? "/pl/blog" : "/blog"}

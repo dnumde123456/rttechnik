@@ -13,7 +13,7 @@ export default function Home() {
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/cleanroom-space.png"
+            src="/images/cleanroom-empty-large.png"
             alt="Clean room facility"
             fill
             priority
@@ -193,7 +193,12 @@ export default function Home() {
                 </Button>
                 <div className="flex items-center space-x-2">
                   <div className="relative h-8 w-10">
-                    <Image src="/images/iso-9001-logo.png" alt="ISO 9001 Certified" fill className="object-contain" />
+                    <Image
+                      src="/images/iso-9001-llc-logo.png"
+                      alt="ISO 9001 Certified"
+                      fill
+                      className="object-contain"
+                    />
                   </div>
                   <div className="relative h-8 w-10">
                     <Image src="/images/bio-forum-member.png" alt="Bio Forum Member" fill className="object-contain" />

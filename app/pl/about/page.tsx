@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, Users, Award, Clock, Building2 } from "lucide-react"
+import { CheckCircle, Users, Award, Clock, Building2, Shield } from "lucide-react"
 
 export default function AboutPage() {
   return (
@@ -30,8 +30,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl animate-fade-in-left">
               <Image
-                src="/placeholder.svg?height=1000&width=800"
-                alt="Zespół RTTechnik"
+                src="/images/cleanroom-lab-equipment.png"
+                alt="Specjaliści RTTechnik w pomieszczeniach czystych"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -79,8 +79,110 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Enhanced ISO 9001 Certification Section */}
+      <section className="py-20 bg-gradient-to-br from-primary/5 to-primary/10">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="animate-fade-in-left">
+              <div className="flex items-center mb-8">
+                <div className="h-20 w-20 rounded-xl bg-primary/15 flex items-center justify-center mr-6 shadow-lg">
+                  <Shield className="h-10 w-10 text-primary" />
+                </div>
+                <div>
+                  <Badge className="mb-3 bg-primary/20 text-primary">Doskonałość w Zapewnieniu Jakości</Badge>
+                  <h2 className="text-4xl font-bold">Certyfikat ISO 9001:2015</h2>
+                  <p className="text-primary font-medium mt-1">Złoty Standard w Zarządzaniu Jakością</p>
+                </div>
+              </div>
+
+              <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
+                RTTechnik z dumą posiada certyfikat ISO 9001:2015, demonstrując nasze niezachwiane zaangażowanie w
+                systemy zarządzania jakością i ciągłe doskonalenie. Ten prestiżowy certyfikat zapewnia, że każdy aspekt
+                naszej działalności spełnia najwyższe międzynarodowe standardy.
+              </p>
+
+              <div className="space-y-6 mb-10">
+                <div className="flex items-start bg-white/50 p-4 rounded-lg shadow-sm">
+                  <CheckCircle className="h-6 w-6 text-primary mr-4 mt-1 shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-lg">System Zarządzania Jakością</h3>
+                    <p className="text-muted-foreground">
+                      Systematyczne podejście do kontroli i zapewnienia jakości we wszystkich operacjach
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start bg-white/50 p-4 rounded-lg shadow-sm">
+                  <CheckCircle className="h-6 w-6 text-primary mr-4 mt-1 shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-lg">Ciągłe Doskonalenie</h3>
+                    <p className="text-muted-foreground">Regularna ocena i usprawnianie wszystkich procesów</p>
+                  </div>
+                </div>
+                <div className="flex items-start bg-white/50 p-4 rounded-lg shadow-sm">
+                  <CheckCircle className="h-6 w-6 text-primary mr-4 mt-1 shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-lg">Zadowolenie Klientów</h3>
+                    <p className="text-muted-foreground">Skupienie na spełnianiu i przekraczaniu oczekiwań klientów</p>
+                  </div>
+                </div>
+                <div className="flex items-start bg-white/50 p-4 rounded-lg shadow-sm">
+                  <CheckCircle className="h-6 w-6 text-primary mr-4 mt-1 shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-lg">Zarządzanie Ryzykiem</h3>
+                    <p className="text-muted-foreground">Proaktywna identyfikacja i ograniczanie ryzyka</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Enhanced Certification Display */}
+              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-primary/20">
+                <h4 className="font-bold text-lg mb-4 text-center">Nasze Certyfikaty i Członkostwa</h4>
+                <div className="flex items-center justify-center space-x-8">
+                  <div className="text-center">
+                    <div className="relative h-24 w-32 bg-gradient-to-br from-primary/10 to-primary/20 rounded-lg p-3 shadow-md hover:shadow-lg transition-shadow">
+                      <Image
+                        src="/images/iso-9001-llc-logo.png"
+                        alt="Certyfikat ISO 9001"
+                        fill
+                        className="object-contain p-2"
+                      />
+                    </div>
+                    <p className="text-sm font-medium mt-2">ISO 9001:2015</p>
+                    <p className="text-xs text-muted-foreground">Zarządzanie Jakością</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="relative h-24 w-32 bg-gradient-to-br from-primary/10 to-primary/20 rounded-lg p-3 shadow-md hover:shadow-lg transition-shadow">
+                      <Image
+                        src="/images/bio-forum-member.png"
+                        alt="Członek Bio Forum"
+                        fill
+                        className="object-contain p-2"
+                      />
+                    </div>
+                    <p className="text-sm font-medium mt-2">Bio Forum</p>
+                    <p className="text-xs text-muted-foreground">Członek Branżowy</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative animate-fade-in-right">
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/30 rounded-2xl blur-lg"></div>
+              <div className="relative h-[700px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                <Image
+                  src="/images/iso-certificate-polish.png"
+                  alt="Certyfikat ISO 9001:2015 RTTechnik"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats Section */}
-      <section className="py-16 bg-muted">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
             <Badge className="mb-4">Nasz Wpływ</Badge>
@@ -147,81 +249,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
-            <Badge className="mb-4">Nasz Zespół</Badge>
-            <h2 className="text-3xl font-bold mb-6">Poznaj Ekspertów Stojących za RTTechnik</h2>
-            <p className="text-muted-foreground text-lg">
-              Nasz zespół wysoko wykwalifikowanych specjalistów łączy dziesięciolecia wspólnego doświadczenia w
-              projektowaniu, inżynierii i wdrażaniu pomieszczeń czystych.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                name: "Dr. Robert Müller",
-                position: "Założyciel i Dyrektor Generalny",
-                image: "/placeholder.svg?height=400&width=400",
-                bio: "Z ponad 30-letnim doświadczeniem w branży, Dr. Müller prowadzi naszą firmę z wizją i wiedzą.",
-              },
-              {
-                name: "Ing. Maria Schmidt",
-                position: "Dyrektor Techniczny",
-                image: "/placeholder.svg?height=400&width=400",
-                bio: "Maria nadzoruje wszystkie aspekty techniczne naszych projektów, zapewniając najwyższe standardy jakości.",
-              },
-              {
-                name: "Dipl.-Ing. Thomas Weber",
-                position: "Kierownik Inżynierii",
-                image: "/placeholder.svg?height=400&width=400",
-                bio: "Thomas wprowadza innowacyjne rozwiązania inżynieryjne nawet do najbardziej złożonych wyzwań pomieszczeń czystych.",
-              },
-              {
-                name: "Dr. Anna Bauer",
-                position: "Kierownik Zapewnienia Jakości",
-                image: "/placeholder.svg?height=400&width=400",
-                bio: "Anna zapewnia, że wszystkie nasze projekty spełniają rygorystyczne wymagania regulacyjne i standardy jakości.",
-              },
-            ].map((member, index) => (
-              <Card
-                key={index}
-                className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="relative h-64">
-                  <Image
-                    src={member.image || "/placeholder.svg"}
-                    alt={member.name}
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold">{member.name}</h3>
-                  <p className="text-primary text-sm mb-3">{member.position}</p>
-                  <p className="text-muted-foreground">{member.bio}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="text-muted-foreground mb-6">
-              Nasz zespół wykracza poza tych kluczowych członków i obejmuje wyspecjalizowanych inżynierów, kierowników
-              projektów, techników i personel pomocniczy – wszystkich zaangażowanych w dostarczanie doskonałości.
-            </p>
-            <Button asChild className="animate-pulse-slow">
-              <Link href="/pl/contact">Skontaktuj się z Naszym Zespołem</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* Values Section */}
-      <section className="py-16 bg-muted">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-left">
@@ -275,19 +304,14 @@ export default function AboutPage() {
             </div>
 
             <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl animate-fade-in-right">
-              <Image
-                src="/placeholder.svg?height=1000&width=800"
-                alt="Wartości RTTechnik"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-700"
-              />
+              <Image src="/images/cleanroom-red-doors.png" alt="Wartości RTTechnik" fill className="object-cover" />
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16">
+      <section className="py-16 bg-muted">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
             <h2 className="text-3xl font-bold mb-6">Gotowy do Współpracy z Nami?</h2>

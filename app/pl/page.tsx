@@ -13,7 +13,7 @@ export default function Home() {
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=1080&width=1920"
+            src="/images/cleanroom-empty-large.png"
             alt="Pomieszczenie czyste"
             fill
             priority
@@ -133,7 +133,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <Button asChild variant="outline" className="animate-bounce-slow">
+            <Button asChild variant="outline" className="animate-bounce-slow bg-transparent">
               <Link href="/pl/services">Zobacz Wszystkie Usługi</Link>
             </Button>
           </div>
@@ -160,7 +160,16 @@ export default function Home() {
                   <div>
                     <h3 className="font-semibold text-lg">Niezrównana Wiedza</h3>
                     <p className="text-muted-foreground">
-                      Ponad 20 lat specjalistycznego doświadczenia w rozwiązaniach pomieszczeń czystych
+                      Ponad 25 lat specjalistycznego doświadczenia w rozwiązaniach pomieszczeń czystych
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-6 w-6 text-primary mr-3 mt-0.5 shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-lg">Certyfikat ISO 9001:2015</h3>
+                    <p className="text-muted-foreground">
+                      System zarządzania jakością certyfikowany według międzynarodowych standardów
                     </p>
                   </div>
                 </li>
@@ -176,34 +185,38 @@ export default function Home() {
                 <li className="flex items-start">
                   <CheckCircle className="h-6 w-6 text-primary mr-3 mt-0.5 shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-lg">Zapewnienie Jakości</h3>
-                    <p className="text-muted-foreground">
-                      Rygorystyczne procesy kontroli jakości, aby zapewnić doskonałość
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-6 w-6 text-primary mr-3 mt-0.5 shrink-0" />
-                  <div>
                     <h3 className="font-semibold text-lg">Ciągłe Wsparcie</h3>
                     <p className="text-muted-foreground">Kompleksowe pakiety konserwacji i serwisu</p>
                   </div>
                 </li>
               </ul>
 
-              <div className="mt-8">
+              <div className="mt-8 flex items-center space-x-4">
                 <Button asChild className="relative overflow-hidden group">
                   <Link href="/pl/about">
                     <span className="relative z-10">Poznaj Naszą Firmę</span>
                     <span className="absolute inset-0 bg-primary-foreground translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
                   </Link>
                 </Button>
+                <div className="flex items-center space-x-2">
+                  <div className="relative h-8 w-10">
+                    <Image
+                      src="/images/iso-9001-llc-logo.png"
+                      alt="Certyfikat ISO 9001"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="relative h-8 w-10">
+                    <Image src="/images/bio-forum-member.png" alt="Członek Bio Forum" fill className="object-contain" />
+                  </div>
+                </div>
               </div>
             </div>
 
             <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl animate-fade-in-right">
               <Image
-                src="/placeholder.svg?height=1000&width=800"
+                src="/images/cleanroom-lab.png"
                 alt="Projekt pomieszczenia czystego RTTechnik"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -283,8 +296,93 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Clean Room Gallery Section */}
       <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
+            <Badge className="mb-4">Nasze Prace</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Najnowocześniejsze Pomieszczenia Czyste</h2>
+            <p className="text-muted-foreground text-lg">
+              Poznaj nasze portfolio zrealizowanych projektów pomieszczeń czystych prezentujących najnowocześniejszą
+              technologię i precyzyjną inżynierię.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card
+              className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
+              style={{ animationDelay: "100ms" }}
+            >
+              <div className="relative h-64">
+                <Image
+                  src="/images/cleanroom-personnel.png"
+                  alt="Pomieszczenie czyste z personelem w kombinezonach ochronnych"
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-2">Produkcja Farmaceutyczna</h3>
+                <p className="text-muted-foreground">
+                  Pomieszczenie czyste klasy ISO 5 do sterylnej produkcji farmaceutycznej z zaawansowaną kontrolą
+                  zanieczyszczeń.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card
+              className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
+              style={{ animationDelay: "200ms" }}
+            >
+              <div className="relative h-64">
+                <Image
+                  src="/images/cleanroom-corridor.png"
+                  alt="Korytarz pomieszczenia czystego ze szklanymi ścianami"
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-2">Ośrodek Badawczy</h3>
+                <p className="text-muted-foreground">
+                  Nowoczesny kompleks pomieszczeń czystych z modułową konstrukcją do badań i rozwoju
+                  biotechnologicznego.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card
+              className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in-up"
+              style={{ animationDelay: "300ms" }}
+            >
+              <div className="relative h-64">
+                <Image
+                  src="/images/cleanroom-changing.png"
+                  alt="Szatnia pomieszczenia czystego z szafkami"
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-2">Obiekty Pomocnicze</h3>
+                <p className="text-muted-foreground">
+                  Kompleksowe szatnie i obszary pomocnicze zaprojektowane dla optymalnego przepływu pracy i zgodności z
+                  przepisami.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center mt-12">
+            <Button asChild variant="outline" className="animate-bounce-slow bg-transparent">
+              <Link href="/pl/gallery">Zobacz Pełną Galerię</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-16 md:py-24 bg-muted">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
             <Badge className="mb-4">Referencje</Badge>
@@ -299,7 +397,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-muted">
+      <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">

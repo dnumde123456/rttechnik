@@ -28,7 +28,7 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl animate-fade-in-left">
               <Image
-                src="/placeholder.svg?height=1000&width=800"
+                src="/images/cleanroom-modular-exterior.png"
                 alt="Przegląd usług RTTechnik"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -152,7 +152,7 @@ export default function ServicesPage() {
             </div>
             <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl animate-fade-in-right">
               <Image
-                src="/placeholder.svg?height=800&width=1000"
+                src="/images/cleanroom-empty-large.png"
                 alt="Proces projektowania pomieszczenia czystego"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -164,7 +164,7 @@ export default function ServicesPage() {
           <div id="installation" className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
             <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl lg:order-first animate-fade-in-left">
               <Image
-                src="/placeholder.svg?height=800&width=1000"
+                src="/images/cleanroom-large-machine.png"
                 alt="Instalacja pomieszczenia czystego"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -255,7 +255,7 @@ export default function ServicesPage() {
             </div>
             <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl animate-fade-in-right">
               <Image
-                src="/placeholder.svg?height=800&width=1000"
+                src="/images/cleanroom-lab-equipment.png"
                 alt="Kwalifikacja pomieszczenia czystego"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -267,7 +267,7 @@ export default function ServicesPage() {
           <div id="training" className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
             <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl lg:order-first animate-fade-in-left">
               <Image
-                src="/placeholder.svg?height=800&width=1000"
+                src="/images/cleanroom-corridor-glass.png"
                 alt="Szkolenie z pomieszczeń czystych"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -359,7 +359,7 @@ export default function ServicesPage() {
             </div>
             <div className="relative h-[400px] rounded-xl overflow-hidden shadow-xl animate-fade-in-right">
               <Image
-                src="/placeholder.svg?height=800&width=1000"
+                src="/images/cleanroom-production-line.png"
                 alt="Konserwacja pomieszczenia czystego"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
